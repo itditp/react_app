@@ -1,0 +1,18 @@
+/* Styles */
+#app {
+  min-width: 550px;
+  max-width: 1000px;
+  margin: 0 auto;
+}
+
+nav {
+  padding-top: 50px;
+}
+
+.wrapper {
+  min-height: 300px;
+}
+
+span {
+	color: red;
+}
