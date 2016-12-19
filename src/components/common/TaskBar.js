@@ -1,14 +1,30 @@
 import React, {PropTypes} from 'react';
 import {Link, IndexLink} from 'react-router';
+import {Tabs, Tab} from 'material-ui/Tabs';
 
-const TaskBar = () => {
-	return (
-		<nav>
-		<IndexLink to="/" activeClassName="active">Service</IndexLink>
-		{" | "}
-		<Link to="/list" activeClassName="active">List</Link>
-		</nav>  
-	);
-};
+export default class TaskBar extends React.Component {
 
-export default TaskBar;
+  constructor(props) {
+    super(props);
+    this.state = {
+      value: 'a'
+    };
+
+    this.handleChange = this.handleChange.bind(this);
+  }
+
+  handleChange(value) {
+    this.setState({
+      value: value
+    });
+  }
+
+  render() {
+    return (
+      <Tabs value={this.state.value} onChange={this.handleChange}>
+        <Tab label="Server" value="a" containerElement={<Link to="/"/>} />
+        <Tab label="List" value="b" containerElement={<Link to="/list"/>}/>
+      </Tabs>
+    );
+  }
+}

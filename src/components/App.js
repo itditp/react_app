@@ -7,9 +7,7 @@ import cyan50 from 'material-ui/styles/colors';
 
 const muiTheme = getMuiTheme({
 	palette: {
-		primary1Color: cyan50,
-		primary2Color: cyan50,
-		primary3Color: cyan50
+		primary1Color: cyan50
 	}
 
 });

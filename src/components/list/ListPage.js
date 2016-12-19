@@ -5,12 +5,13 @@ import * as workerActions from '../../actions/workerActions';
 import * as managerActions from '../../actions/managerActions';
 import ListStaff from './ListStaff';
 import {browserHistory} from 'react-router';
-import RaisedButton from 'material-ui/RaisedButton';
 import FlatButton from 'material-ui/FlatButton';
 import Dialog from 'material-ui/Dialog';
 import {Card, CardActions, CardHeader, CardText} from 'material-ui/Card';
 import WorkerForm from './WorkerForm';
 import InitializeFromStateForm from './InitializeFromStateForm';
+import ContentAdd from 'material-ui/svg-icons/content/add';
+import FloatingActionButton from 'material-ui/FloatingActionButton';
 
 class ListPage extends React.Component {
 	constructor(props, context) {
@@ -80,9 +81,16 @@ class ListPage extends React.Component {
 		const managers = this.props.managers;
 		const staff = workers.concat(managers);
 
+		const styleFloatingActionButton = {
+			margin: 5,
+			float: 'right'
+		};
+
 		return(
 			<div>
-			<RaisedButton label="Add Worker" onTouchTap={this.handleOpen} />
+			<FloatingActionButton mini={true} style={styleFloatingActionButton} onTouchTap={this.handleOpen}>
+			<ContentAdd />
+			</FloatingActionButton>
 			<Dialog
 			modal={false}
 			open={this.state.open}
