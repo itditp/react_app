@@ -15,11 +15,11 @@ const ListStaff = ({staff, handleOpenDetail, handleCloseDetail, openDetail}) => 
     <div>
     <h1>Staff:</h1>
     <div>
-    {staff.map(man =>
+    {staff.sort((a, b) => a.firstName.toLowerCase() > b.firstName.toLowerCase()).map(man =>
         <Paper style={styleForMan} key={man.id} zDepth={2} onClick={handleOpenDetail}>
         {man.firstName}{' '}
-        {man.lastName}{' '}
-        {man.patronymic}
+        {man.patronymic}{' '}
+        {man.lastName}
         </Paper>
       )}
     </div>

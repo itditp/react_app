@@ -1,8 +1,8 @@
 export default {
-	posts: [],
+	posts: [],	
 	workers: [
 		{
-			id: 'dory-mouse',
+			id: '434536565564',
 			firstName: 'Dory',
 			lastName: 'Mouse',
 			patronymic: 'Boby',
@@ -12,7 +12,7 @@ export default {
 			lunchTimeAtEnd: 14
 		},
 		{
-			id: 'cory-house',
+			id: '6345635436354',
 			firstName: 'Cory',
 			lastName: 'House',
 			patronymic: 'Doby',
@@ -24,7 +24,7 @@ export default {
 	],
 	managers: [
 		{
-			id: 'fory-rouse',
+			id: '7647575647457654',
 			firstName: 'Fory',
 			lastName: 'Rouse',
 			patronymic: 'Voby',
@@ -32,7 +32,7 @@ export default {
 			welcomTimeAtEnd: 16
 		},
 		{
-			id: 'billy-sato',
+			id: '345436576765',
 			firstName: 'Billy',
 			lastName: 'Sato',
 			patronymic: 'Vigi',

@@ -4,7 +4,7 @@ import { TimePicker, TextField } from 'redux-form-material-ui';
 import RaisedButton from 'material-ui/RaisedButton';
 
 
-let WorkerForm = class WorkerForm extends Component {
+let ManagerForm = class ManagerForm extends Component {
     componentDidMount() {
     this.refs.firstName            // the Field
       .getRenderedComponent() // on Field, returns ReduxFormMaterialUITextField
@@ -44,33 +44,17 @@ let WorkerForm = class WorkerForm extends Component {
             validate={required}/>
         </div>
         <div>
-         <Field name="payment"
-            component={TextField}
-            hintText="payment"
-            type='number'
-            floatingLabelText="payment"
-            validate={required}/>
-        </div>
-        <div>
-          <Field name="seatNumber"
-            component={TextField}
-            hintText="seatNumber"
-            type='number'
-            floatingLabelText="seatNumber"
-            validate={required}/>
-        </div>
-        <div>
-          <Field name="lunchTimeAtBegin"
+          <Field name="welcomTimeAtBegin"
             component={TimePicker}
-            hintText="lunchTimeAtBegin" 
-            floatingLabelText="lunchTimeAtBegin"
+            hintText="welcomTimeAtBegin" 
+            floatingLabelText="welcomTimeAtBegin"
             validate={required}/>
         </div>
         <div>
-          <Field name="lunchTimeAtEnd"
+          <Field name="welcomTimeAtEnd"
             component={TimePicker}
-            hintText="lunchTimeAtEnd" 
-            floatingLabelText="lunchTimeAtEnd"
+            hintText="welcomTimeAtEnd" 
+            floatingLabelText="welcomTimeAtEnd"
             validate={required}/>
         </div>
       </form>
@@ -79,8 +63,8 @@ let WorkerForm = class WorkerForm extends Component {
 }
 
 // Decorate the form component
-WorkerForm = reduxForm({
-  form: 'worker' // a unique name for this form
-})(WorkerForm);
+ManagerForm = reduxForm({
+  form: 'manager' // a unique name for this form
+})(ManagerForm);
 
-export default WorkerForm;
+export default ManagerForm;

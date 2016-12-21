@@ -1,5 +1,16 @@
 import * as types from './actionTypes';
 
-export function createWorkeruccess(manager) {
-  return {type: types.CREATE_MANAGER_SUCCESS, manager};
+export function createManagerSuccess(newManager) {
+  return {type: types.CREATE_MANAGER_SUCCESS, newManager};
 }
+
+export function updateManagerSuccess(newManager) {
+  return {type: types.UPDATE_MANAGER_SUCCESS, newManager};
+}
+
+export function saveManager(newManager) {
+	return function (dispatch) {
+		return dispatch(createManagerSuccess(newManager));
+	};
+}
+

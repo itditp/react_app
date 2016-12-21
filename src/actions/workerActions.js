@@ -1,6 +1,6 @@
 import * as types from './actionTypes';
 
-export function createWorkeruccess(newWorker) {
+export function createWorkerSuccess(newWorker) {
   return {type: types.CREATE_WORKER_SUCCESS, newWorker};
 }
 
@@ -10,7 +10,7 @@ export function updateWorkerSuccess(newWorker) {
 
 export function saveWorker(newWorker) {
 	return function (dispatch) {
-		return dispatch(createWorkeruccess(newWorker));
+		return dispatch(createWorkerSuccess(newWorker));
 	};
 }
 
