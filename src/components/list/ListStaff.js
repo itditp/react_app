@@ -51,7 +51,10 @@ export default ListStaff;
 
 
 
+
+
 /*
+
 const ListStaff = ({staff}) => {
   return (
     <div>
@@ -69,9 +72,11 @@ const ListStaff = ({staff}) => {
       </div>
     </div>
   );
-};*/
+};
 
-/*
+
+
+
 renderImages() {
 return this.props.images.map(image => (
 
