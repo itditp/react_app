@@ -13,7 +13,17 @@ const styleFlatButtonButton = {
         float: 'right'
       };
 
-const AddDialogue = ({ handleSubmitWorker, workerValue, managerValue, backToCoice, handleSubmitManager, openAdd, handleCloseAdd, AddManager, AddWorker }) => (
+const AddDialogue = ({ 
+  handleSubmitWorker, 
+  workerValue, 
+  managerValue, 
+  backToCoice, 
+  handleSubmitManager, 
+  openAdd, 
+  handleCloseAdd, 
+  AddManager, 
+  AddWorker 
+}) => (
    <Dialog
         modal={true}
         open={openAdd}

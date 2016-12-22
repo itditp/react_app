@@ -13,29 +13,29 @@ const styleForMan = {
 const ListStaff = ({staff, handleOpenDetail, handleCloseDetail, openDetail}) => {
   return (
     <div>
-    <h1>Staff:</h1>
-    <div>
-    {staff.sort((a, b) => a.firstName.toLowerCase() > b.firstName.toLowerCase()).map(man =>
-        <Paper style={styleForMan} key={man.id} zDepth={2} onClick={handleOpenDetail}>
-        {man.firstName}{' '}
-        {man.patronymic}{' '}
-        {man.lastName}
-        </Paper>
-      )}
-    </div>
-    <Dialog
+      <h1>Staff:</h1>
+      <div>
+        {staff.sort((a, b) => a.firstName.toLowerCase() > b.firstName.toLowerCase()).map(man =>
+            <Paper style={styleForMan} key={man.id} zDepth={2} onClick={handleOpenDetail}>
+            {man.firstName}{' '}
+            {man.patronymic}{' '}
+            {man.lastName}
+            </Paper>
+          )}
+      </div>
+      <Dialog
         modal={false}
         open={openDetail}
         onRequestClose={handleCloseDetail}
         autoScrollBodyContent={true}>
 
         vwevewvewvewvew
-        <FlatButton
-        label="Cancel"
-        primary={true}
-        onTouchTap={handleCloseDetail}
-        />
-        </Dialog>
+      <FlatButton
+      label="Cancel"
+      primary={true}
+      onTouchTap={handleCloseDetail}
+      />
+      </Dialog>
     </div>
     );
 };
@@ -70,3 +70,16 @@ const ListStaff = ({staff}) => {
     </div>
   );
 };*/
+
+/*
+renderImages() {
+return this.props.images.map(image => (
+
+<a href="#" data-target="{image._id}">Open Modal</a>
+
+<div className="modal" id="{image._id}">
+<img src="{image.img} />"
+</div>
+
+));
+}*/
