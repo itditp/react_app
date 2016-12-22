@@ -1,34 +1,27 @@
 import React, { Component } from 'react';
 import { Field, reduxForm } from 'redux-form';
 import { TimePicker, TextField } from 'redux-form-material-ui';
-import RaisedButton from 'material-ui/RaisedButton';
+import FlatButton from 'material-ui/FlatButton';
 
 
 let WorkerForm = class WorkerForm extends Component {
-  componentDidMount() {
-    this.refs.firstName            // the Field
-    .getRenderedComponent() // on Field, returns ReduxFormMaterialUITextField
-    .getRenderedComponent() // on ReduxFormMaterialUITextField, returns TextField
-    .focus()                // on TextField
-  }
-
   render() {
 
     const style = {float: 'right'};
     const required = value => value == null ? 'Required' : undefined;
-    const { handleSubmit } = this.props;
+    const positiveNumber = value => value < 0 ? 'Only positiveNumber' : undefined;
+    const { handleSubmit, backToCoice } = this.props;
     
     return (
-      <form onSubmit={handleSubmit}>
+      <form>
         <div>
-          <button style={style} type="submit">Submit</button>
+          <FlatButton style={style} onTouchTap={handleSubmit} label="Save" />
         </div>
         <div>
          <Field name="firstName"
             component={TextField}
             hintText="firstName"
             floatingLabelText="firstName"
-            ref="firstName" withRef
             validate={required}/>
         </div>
         <div>
@@ -51,7 +44,7 @@ let WorkerForm = class WorkerForm extends Component {
             hintText="payment"
             type='number'
             floatingLabelText="payment"
-            validate={required}/>
+            validate={[required, positiveNumber]}/>
         </div>
         <div>
           <Field name="seatNumber"
@@ -59,7 +52,7 @@ let WorkerForm = class WorkerForm extends Component {
             hintText="seatNumber"
             type='number'
             floatingLabelText="seatNumber"
-            validate={required}/>
+            validate={[required, positiveNumber]}/>
         </div>
         <div>
           <Field name="lunchTimeAtBegin"
@@ -75,6 +68,7 @@ let WorkerForm = class WorkerForm extends Component {
             floatingLabelText="lunchTimeAtEnd"
             validate={required}/>
         </div>
+        <FlatButton style={style} onClick={backToCoice} label="Back" />
       </form>
     );
   }

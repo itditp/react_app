@@ -17,103 +17,139 @@ class ListPage extends React.Component {
 
 		this.state = {
 			openAdd: false,
-			openDetail: false
+			openDetail: false,
+			workerValue: null,
+			managerValue: null
 
 		};
 			//for  addModalWindow:
-		this.handleOpenAdd = this.handleOpenAdd.bind(this);
-		this.handleCloseAdd = this.handleCloseAdd.bind(this);
+			this.handleOpenAdd = this.handleOpenAdd.bind(this);
+			this.handleCloseAdd = this.handleCloseAdd.bind(this);
 			//for  detailModalWindow:
-		this.handleOpenDetail = this.handleOpenDetail.bind(this);
-		this.handleCloseDetail = this.handleCloseDetail.bind(this);
+			this.handleOpenDetail = this.handleOpenDetail.bind(this);
+			this.handleCloseDetail = this.handleCloseDetail.bind(this);
 			//for saveNewStaff:
-		this.handleSubmitWorker = this.handleSubmitWorker.bind(this);
-		this.handleSubmitManager = this.handleSubmitManager.bind(this)
+			this.handleSubmitWorker = this.handleSubmitWorker.bind(this);
+			this.handleSubmitManager = this.handleSubmitManager.bind(this);
+
+			this.AddWorker = this.AddWorker.bind(this);
+			this.AddManager = this.AddManager.bind(this);
+
+			this.backToCoice = this.backToCoice.bind(this);
+		}
+
+		AddWorker() {
+			this.setState({
+				workerValue: 1,
+				managerValue: null
+			});
+		}
+
+		AddManager() {
+			this.setState({
+				workerValue: null,
+				managerValue: 1
+			});
+		}
+		handleOpenAdd() {
+			this.setState({openAdd: true});
+		}
+
+		handleCloseAdd() {
+			this.setState({
+				openAdd: false,
+				workerValue: null,
+				managerValue: null
+			});
+		}
+
+		handleOpenDetail() {
+			this.setState({openDetail: true});
+		}
+
+		handleCloseDetail() {
+			this.setState({openDetail: false});
+		}
+
+		handleSubmitWorker(newWorker) {
+			event.preventDefault();
+			this.props.workeractions.saveWorker(newWorker);
+			this.handleCloseAdd();
+		}
+
+		handleSubmitManager(newManager) {
+			event.preventDefault();
+			this.props.manageractions.saveManager(newManager);
+			this.handleCloseAdd();
+		}
+
+		backToCoice() {
+			this.setState({
+				workerValue: null,
+				managerValue: null
+			});
+		}
+
+		render() {
+
+			const workers = this.props.workers;
+			const managers = this.props.managers;
+			const staff = workers.concat(managers);
+			const styleFloatingActionButton = {
+				margin: 5,
+				float: 'right'
+			};
+
+			return(
+				<div>
+					<FloatingActionButton 
+						mini={true} 
+						style={styleFloatingActionButton} 
+						onTouchTap={this.handleOpenAdd}>
+						<ContentAdd />
+					</FloatingActionButton>
+
+					<AddDialogue   /*modalWindow for adding stuff*/
+						openAdd={this.state.openAdd}
+						workerValue={this.state.workerValue}
+						managerValue={this.state.managerValue}
+						handleSubmitWorker={this.handleSubmitWorker}
+						handleSubmitManager={this.handleSubmitManager}
+						handleCloseAdd={this.handleCloseAdd}
+						AddWorker={this.AddWorker}
+						AddManager={this.AddManager}
+						backToCoice={this.backToCoice}/>
+
+					<ListStaff 
+						staff={staff}
+						handleOpenDetail={this.handleOpenDetail}
+						handleCloseDetail={this.handleCloseDetail}
+						openDetail={this.state.openDetail}/>
+				</div>
+				);
+		}
 	}
 
-	handleOpenAdd() {
-		this.setState({openAdd: true});
-	}
+	ListPage.propTypes = {
+		workers: PropTypes.array.isRequired,
+		workeractions: PropTypes.object.isRequired,
+		manageractions: PropTypes.object.isRequired,
+		managers: PropTypes.array.isRequired
+	};
 
-	handleCloseAdd() {
-		this.setState({openAdd: false});
-	}
+	function mapStateToProps(state, ownProps) {
 
-	handleOpenDetail() {
-		this.setState({openDetail: true});
-	}
-
-	handleCloseDetail() {
-		this.setState({openDetail: false});
-	}
-
-	handleSubmitWorker(newWorker) {
-		console.log(newWorker);
-		event.preventDefault();
-		this.props.workeractions.saveWorker(newWorker);
-	}
-
-	handleSubmitManager(newManager) {
-		console.log(newManager);
-		event.preventDefault();
-		this.props.manageractions.saveManager(newManager);
-	}
-
-	render() {
-
-		const workers = this.props.workers;
-		const managers = this.props.managers;
-		const staff = workers.concat(managers);
-		const styleFloatingActionButton = {
-			margin: 5,
-			float: 'right'
+		return {
+			workers: state.workers,
+			managers: state.managers
 		};
-
-		return(
-			<div>
-				<FloatingActionButton 
-					mini={true} 
-					style={styleFloatingActionButton} 
-					onTouchTap={this.handleOpenAdd}>
-					<ContentAdd />
-				</FloatingActionButton>
-
-				<AddDialogue   /*modalWindow for adding stuff*/
-					openAdd={this.state.openAdd}
-					handleSubmitWorker={this.handleSubmitWorker}
-					handleSubmitManager={this.handleSubmitManager}
-					handleCloseAdd={this.handleCloseAdd}/>
-
-				<ListStaff 
-					staff={staff}
-					handleOpenDetail={this.handleOpenDetail}
-					handleCloseDetail={this.handleCloseDetail}
-					openDetail={this.state.openDetail}/>
-			</div>
-		);
 	}
-}
 
-ListPage.propTypes = {
-	workers: PropTypes.array.isRequired,
-	workeractions: PropTypes.object.isRequired,
-	manageractions: PropTypes.object.isRequired,
-	managers: PropTypes.array.isRequired
-};
+	function mapDispatchToProps(dispatch) {
+		return {
+			workeractions: bindActionCreators(workerActions, dispatch),
+			manageractions: bindActionCreators(managerActions, dispatch)
+		};
+	}
 
-function mapStateToProps(state, ownProps) {
-
-	return {
-		workers: state.workers,
-		managers: state.managers
-	};
-}
-
-function mapDispatchToProps(dispatch) {
-	return {
-		workeractions: bindActionCreators(workerActions, dispatch),
-		manageractions: bindActionCreators(managerActions, dispatch)
-	};
-}
-
-export default connect(mapStateToProps, mapDispatchToProps)(ListPage);
+	export default connect(mapStateToProps, mapDispatchToProps)(ListPage);
