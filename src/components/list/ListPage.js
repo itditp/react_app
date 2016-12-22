@@ -20,22 +20,22 @@ class ListPage extends React.Component {
 			openDetail: false
 
 		};
-
-		this.handleOpen = this.handleOpen.bind(this);
-		this.handleClose = this.handleClose.bind(this);
-
+			//for  addModalWindow:
+		this.handleOpenAdd = this.handleOpenAdd.bind(this);
+		this.handleCloseAdd = this.handleCloseAdd.bind(this);
+			//for  detailModalWindow:
 		this.handleOpenDetail = this.handleOpenDetail.bind(this);
 		this.handleCloseDetail = this.handleCloseDetail.bind(this);
-
+			//for saveNewStaff:
 		this.handleSubmitWorker = this.handleSubmitWorker.bind(this);
 		this.handleSubmitManager = this.handleSubmitManager.bind(this)
 	}
 
-	handleOpen() {
+	handleOpenAdd() {
 		this.setState({openAdd: true});
 	}
 
-	handleClose() {
+	handleCloseAdd() {
 		this.setState({openAdd: false});
 	}
 
@@ -58,6 +58,7 @@ class ListPage extends React.Component {
 		event.preventDefault();
 		this.props.manageractions.saveManager(newManager);
 	}
+
 	render() {
 
 		const workers = this.props.workers;
@@ -73,15 +74,15 @@ class ListPage extends React.Component {
 				<FloatingActionButton 
 					mini={true} 
 					style={styleFloatingActionButton} 
-					onTouchTap={this.handleOpen}>
+					onTouchTap={this.handleOpenAdd}>
 					<ContentAdd />
 				</FloatingActionButton>
 
-				<AddDialogue
+				<AddDialogue   /*modalWindow for adding stuff*/
 					openAdd={this.state.openAdd}
 					handleSubmitWorker={this.handleSubmitWorker}
 					handleSubmitManager={this.handleSubmitManager}
-					handleClose={this.handleClose}/>
+					handleCloseAdd={this.handleCloseAdd}/>
 
 				<ListStaff 
 					staff={staff}

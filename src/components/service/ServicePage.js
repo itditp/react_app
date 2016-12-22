@@ -12,13 +12,14 @@ class ServicePage extends React.Component {
 	}
 
 	render() {
-		
+		const posts = this.props.posts;
+		const cutPosts = posts.slice(0, posts.length-1); 	//cutLastPost
 
 		return (
 			<div>
-			<PostList loading={this.props.loading} posts={this.props.posts} />
+			<PostList loading={this.props.loading} posts={cutPosts} />
 			</div>
-			);
+		);
 	}
 }
 

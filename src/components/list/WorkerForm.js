@@ -5,17 +5,19 @@ import RaisedButton from 'material-ui/RaisedButton';
 
 
 let WorkerForm = class WorkerForm extends Component {
-    componentDidMount() {
+  componentDidMount() {
     this.refs.firstName            // the Field
-      .getRenderedComponent() // on Field, returns ReduxFormMaterialUITextField
-      .getRenderedComponent() // on ReduxFormMaterialUITextField, returns TextField
-      .focus()                // on TextField
+    .getRenderedComponent() // on Field, returns ReduxFormMaterialUITextField
+    .getRenderedComponent() // on ReduxFormMaterialUITextField, returns TextField
+    .focus()                // on TextField
   }
 
   render() {
+
     const style = {float: 'right'};
     const required = value => value == null ? 'Required' : undefined;
     const { handleSubmit } = this.props;
+    
     return (
       <form onSubmit={handleSubmit}>
         <div>

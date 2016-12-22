@@ -37,14 +37,16 @@ class AddDialogue extends Component {
   }
 
   render() {
+
     const style = {margin: 12};
     const required = value => value == null ? 'Required' : undefined;
-    const { handleSubmitWorker, handleSubmitManager, openAdd, handleClose } = this.props;
+    const { handleSubmitWorker, handleSubmitManager, openAdd, handleCloseAdd } = this.props;
+    
     return (
       <Dialog
         modal={true}
         open={openAdd}
-        onRequestClose={handleClose}
+        onRequestClose={handleCloseAdd}
         autoScrollBodyContent={true}>
 
         <If condition={ !this.state.workerValue && !this.state.managerValue }>
@@ -55,14 +57,14 @@ class AddDialogue extends Component {
             </div>
           </Then>
         </If>
-        { this.state.workerValue && <WorkerForm onSubmit={handleSubmitWorker}/>}
 
-       { this.state.managerValue && <ManagerForm onSubmit={handleSubmitManager}/>}
+        { this.state.workerValue && <WorkerForm onSubmit={handleSubmitWorker}/>}
+        { this.state.managerValue && <ManagerForm onSubmit={handleSubmitManager}/>}
 
         <FlatButton
           label="Cancel"
           primary={true}
-          onTouchTap={handleClose}
+          onTouchTap={handleCloseAdd}
           />
       </Dialog>
     );
