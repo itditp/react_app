@@ -9,7 +9,8 @@ export default {
 			payment: 100,
 			seatNumber: 1,
 			lunchTimeAtBegin: 13,
-			lunchTimeAtEnd: 14
+			lunchTimeAtEnd: 14,
+			isWorker: true
 		},
 		{
 			id: '6345635436354',
@@ -19,7 +20,8 @@ export default {
 			payment: 200,
 			seatNumber: 2,
 			lunchTimeAtBegin: 9,
-			lunchTimeAtEnd: 11
+			lunchTimeAtEnd: 11,
+			isWorker: true
 		}
 	],
 	managers: [
@@ -29,7 +31,8 @@ export default {
 			lastName: 'Rouse',
 			patronymic: 'Voby',
 			welcomTimeAtBegin: 14,
-			welcomTimeAtEnd: 16
+			welcomTimeAtEnd: 16,
+			isManager: true
 		},
 		{
 			id: '345436576765',
@@ -37,7 +40,8 @@ export default {
 			lastName: 'Sato',
 			patronymic: 'Vigi',
 			welcomTimeAtBegin: 10,
-			welcomTimeAtEnd: 17
+			welcomTimeAtEnd: 17,
+			isManager: true
 		}
 	],
 	ajaxCallsInProgress: 0

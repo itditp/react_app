@@ -3,13 +3,13 @@ import {connect} from 'react-redux';
 import {bindActionCreators} from 'redux';
 import * as workerActions from '../../actions/workerActions';
 import * as managerActions from '../../actions/managerActions';
-import ListStaff from './ListStaff';
 import FlatButton from 'material-ui/FlatButton';
 import Dialog from 'material-ui/Dialog';
 import {Card, CardActions, CardHeader, CardText} from 'material-ui/Card';
 import ContentAdd from 'material-ui/svg-icons/content/add';
 import FloatingActionButton from 'material-ui/FloatingActionButton';
 import AddDialogue from './AddDialogue';
+import ListStaff from './ListStaff';
 
 class ListPage extends React.Component {
 	constructor(props, context) {
@@ -17,7 +17,6 @@ class ListPage extends React.Component {
 
 		this.state = {
 			openAdd: false,
-			openDetail: false,
 			workerValue: null,
 			managerValue: null
 
@@ -25,9 +24,7 @@ class ListPage extends React.Component {
 			//for  addModalWindow:
 			this.handleOpenAdd = this.handleOpenAdd.bind(this);
 			this.handleCloseAdd = this.handleCloseAdd.bind(this);
-			//for  detailModalWindow:
-			this.handleOpenDetail = this.handleOpenDetail.bind(this);
-			this.handleCloseDetail = this.handleCloseDetail.bind(this);
+
 			//for saveNewStaff:
 			this.handleSubmitWorker = this.handleSubmitWorker.bind(this);
 			this.handleSubmitManager = this.handleSubmitManager.bind(this);
@@ -63,14 +60,6 @@ class ListPage extends React.Component {
 			});
 		}
 
-		handleOpenDetail() {
-			this.setState({openDetail: true});
-		}
-
-		handleCloseDetail() {
-			this.setState({openDetail: false});
-		}
-
 		handleSubmitWorker(newWorker) {
 			event.preventDefault();
 			this.props.workeractions.saveWorker(newWorker);
@@ -103,7 +92,7 @@ class ListPage extends React.Component {
 			return(
 				<div>
 					<FloatingActionButton 
-						mini={true} 
+						mini 
 						style={styleFloatingActionButton} 
 						onTouchTap={this.handleOpenAdd}>
 						<ContentAdd />
@@ -119,12 +108,8 @@ class ListPage extends React.Component {
 						AddWorker={this.AddWorker}
 						AddManager={this.AddManager}
 						backToCoice={this.backToCoice}/>
-
-					<ListStaff 
-						staff={staff}
-						handleOpenDetail={this.handleOpenDetail}
-						handleCloseDetail={this.handleCloseDetail}
-						openDetail={this.state.openDetail}/>
+				
+					<ListStaff staff={staff}/>
 				</div>
 				);
 		}

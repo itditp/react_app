@@ -1,90 +1,50 @@
-import React, {PropTypes} from 'react';
+import React, { Component, PropTypes } from 'react';
 import Paper from 'material-ui/Paper';
-import {Link} from 'react-router';
-import FlatButton from 'material-ui/FlatButton';
-import Dialog from 'material-ui/Dialog';
+import DialogueBox from './DialogueBox';
 
-const styleForMan = {
-  margin: 10,
-  padding: 10,
-  textAlign: "center"
-};
 
-const ListStaff = ({staff, handleOpenDetail, handleCloseDetail, openDetail}) => {
-  return (
-    <div>
-      <h1>Staff:</h1>
-      <div>
-        {staff.sort((a, b) => a.firstName.toLowerCase() > b.firstName.toLowerCase()).map(man =>
-            <Paper style={styleForMan} key={man.id} zDepth={2} onClick={handleOpenDetail}>
-            {man.firstName}{' '}
-            {man.patronymic}{' '}
-            {man.lastName}
-            </Paper>
-          )}
+class ListStaff extends Component {
+
+  constructor(props){
+
+    super(props);
+
+    this.renderRecipeList = this.renderRecipeList.bind(this);
+  }
+
+  renderRecipeList(man, index){
+
+    const currentMan = man;
+    const styleForMan = {
+      margin: 10,
+      padding: 10,
+      textAlign: "center"
+    };
+
+    return(
+      <div key={currentMan.id}>
+        <DialogueBox currentMan={currentMan}/>
       </div>
-      <Dialog
-        modal={false}
-        open={openDetail}
-        onRequestClose={handleCloseDetail}
-        autoScrollBodyContent={true}>
-
-        vwevewvewvewvew
-      <FlatButton
-      label="Cancel"
-      primary={true}
-      onTouchTap={handleCloseDetail}
-      />
-      </Dialog>
-    </div>
     );
-};
+  }
+
+  render(){
+
+    const self = this;
+    const { staff } = this.props;
+
+    return(
+      <div>
+        <div>
+          {staff.sort((a, b) => a.firstName.toLowerCase() > b.firstName.toLowerCase()).map(self.renderRecipeList)}
+        </div>
+      </div>
+    );
+  }
+}
 
 ListStaff.propTypes = {
   staff: PropTypes.array.isRequired
 };
 
 export default ListStaff;
-
-
-
-
-
-
-
-
-/*
-
-const ListStaff = ({staff}) => {
-  return (
-    <div>
-      <h1>Staff:</h1>
-      <div>
-        {staff.map(man =>
-          <Paper style={styleForMan} key={man.id} zDepth={2}>
-            <Link to={'/staff/' + man.id}>
-              {man.firstName}{' '}
-              {man.lastName}{' '}
-              {man.patronymic}
-            </Link>
-          </Paper>
-        )}
-      </div>
-    </div>
-  );
-};
-
-
-
-
-renderImages() {
-return this.props.images.map(image => (
-
-<a href="#" data-target="{image._id}">Open Modal</a>
-
-<div className="modal" id="{image._id}">
-<img src="{image.img} />"
-</div>
-
-));
-}*/

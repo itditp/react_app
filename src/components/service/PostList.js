@@ -25,7 +25,7 @@ const PostList = ({posts, loading}) => {
     <div>
       <h1 style={styleForTitle}>Posts:</h1>
       <Paper style={style} zDepth={3}>
-        {loading && <LoadingСircle />}
+        {loading && <LoadingСircle/>}
         {posts.map(post =>
           <Paper style={styleForPost} key={post.id} zDepth={2}>
             <span>ID:</span>{post.id}<br/>
