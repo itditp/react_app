@@ -6,7 +6,7 @@ export default function workerReducer(state = initialState.workers, action) {
     case types.CREATE_WORKER_SUCCESS:
       return [
         ...state,
-        Object.assign({}, action.newWorker, {id: + new Date})
+        Object.assign({}, action.newWorker, {id: + new Date, isWorker: true})
       ];
 
     case types.UPDATE_WORKER_SUCCESS:

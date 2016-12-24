@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { Component, PropTypes } from 'react';
 import { Field, reduxForm } from 'redux-form';
 import { TimePicker, TextField } from 'redux-form-material-ui';
 import FlatButton from 'material-ui/FlatButton';
@@ -11,6 +11,7 @@ let WorkerForm = class WorkerForm extends Component {
     const required = value => value == null ? 'Required' : undefined;
     const positiveNumber = value => value < 0 ? 'Only positiveNumber' : undefined;
     const { handleSubmit, backToCoice } = this.props;
+
     
     return (
       <form>
@@ -42,7 +43,7 @@ let WorkerForm = class WorkerForm extends Component {
          <Field name="payment"
             component={TextField}
             hintText="payment"
-            type='number'
+            type="number"
             floatingLabelText="payment"
             validate={[required, positiveNumber]}/>
         </div>
@@ -50,13 +51,14 @@ let WorkerForm = class WorkerForm extends Component {
           <Field name="seatNumber"
             component={TextField}
             hintText="seatNumber"
-            type='number'
+            type="number"
             floatingLabelText="seatNumber"
             validate={[required, positiveNumber]}/>
         </div>
         <div>
           <Field name="lunchTimeAtBegin"
             component={TimePicker}
+            format={null}   
             hintText="lunchTimeAtBegin" 
             floatingLabelText="lunchTimeAtBegin"
             validate={required}/>
@@ -64,6 +66,7 @@ let WorkerForm = class WorkerForm extends Component {
         <div>
           <Field name="lunchTimeAtEnd"
             component={TimePicker}
+            format={null}
             hintText="lunchTimeAtEnd" 
             floatingLabelText="lunchTimeAtEnd"
             validate={required}/>
@@ -72,7 +75,12 @@ let WorkerForm = class WorkerForm extends Component {
       </form>
     );
   }
-}
+};
+
+WorkerForm.propTypes = {
+    backToCoice: PropTypes.func.isRequired,
+    handleSubmit: PropTypes.func.isRequired
+};
 
 // Decorate the form component
 WorkerForm = reduxForm({

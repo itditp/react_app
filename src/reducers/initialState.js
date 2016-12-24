@@ -8,8 +8,8 @@ export default {
 			patronymic: 'Boby',
 			payment: 100,
 			seatNumber: 1,
-			lunchTimeAtBegin: 13,
-			lunchTimeAtEnd: 14,
+			lunchTimeAtBegin: new Date(),
+			lunchTimeAtEnd: new Date(),
 			isWorker: true
 		},
 		{
@@ -19,8 +19,8 @@ export default {
 			patronymic: 'Doby',
 			payment: 200,
 			seatNumber: 2,
-			lunchTimeAtBegin: 9,
-			lunchTimeAtEnd: 11,
+			lunchTimeAtBegin: new Date(),
+			lunchTimeAtEnd: new Date(),
 			isWorker: true
 		}
 	],
@@ -30,8 +30,8 @@ export default {
 			firstName: 'Fory',
 			lastName: 'Rouse',
 			patronymic: 'Voby',
-			welcomTimeAtBegin: 14,
-			welcomTimeAtEnd: 16,
+			welcomTimeAtBegin: new Date(),
+			welcomTimeAtEnd: new Date(),
 			isManager: true
 		},
 		{
@@ -39,8 +39,8 @@ export default {
 			firstName: 'Billy',
 			lastName: 'Sato',
 			patronymic: 'Vigi',
-			welcomTimeAtBegin: 10,
-			welcomTimeAtEnd: 17,
+			welcomTimeAtBegin: new Date(),
+			welcomTimeAtEnd: new Date(),
 			isManager: true
 		}
 	],

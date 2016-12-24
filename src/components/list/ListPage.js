@@ -88,28 +88,34 @@ class ListPage extends React.Component {
 				margin: 5,
 				float: 'right'
 			};
+			const styleDiv = {
+				margin: 103
+			};
 
 			return(
-				<div>
-					<FloatingActionButton 
-						mini 
-						style={styleFloatingActionButton} 
-						onTouchTap={this.handleOpenAdd}>
-						<ContentAdd />
-					</FloatingActionButton>
+				<div style={styleDiv}>
+					<div>
+						<FloatingActionButton 
+							mini 
+							style={styleFloatingActionButton} 
+							onTouchTap={this.handleOpenAdd}>
+							<ContentAdd />
+						</FloatingActionButton>
 
-					<AddDialogue   /*modalWindow for adding stuff*/
-						openAdd={this.state.openAdd}
-						workerValue={this.state.workerValue}
-						managerValue={this.state.managerValue}
-						handleSubmitWorker={this.handleSubmitWorker}
-						handleSubmitManager={this.handleSubmitManager}
-						handleCloseAdd={this.handleCloseAdd}
-						AddWorker={this.AddWorker}
-						AddManager={this.AddManager}
-						backToCoice={this.backToCoice}/>
-				
-					<ListStaff staff={staff}/>
+						<AddDialogue   /*modalWindow(add stuff)*/
+							openAdd={this.state.openAdd}
+							workerValue={this.state.workerValue}
+							managerValue={this.state.managerValue}
+							handleSubmitWorker={this.handleSubmitWorker}
+							handleSubmitManager={this.handleSubmitManager}
+							handleCloseAdd={this.handleCloseAdd}
+							AddWorker={this.AddWorker}
+							AddManager={this.AddManager}
+							backToCoice={this.backToCoice}/>
+					</div>
+					<div>
+						<ListStaff staff={staff}/>
+					</div>
 				</div>
 				);
 		}

@@ -10,8 +10,8 @@ import ManagerForm from './ManagerForm';
 const style = {margin: 12};
 const required = value => value == null ? 'Required' : undefined;
 const styleFlatButtonButton = {
-        float: 'right'
-      };
+  float: 'right'
+};
 
 const AddDialogue = ({ 
   handleSubmitWorker, 
@@ -25,16 +25,16 @@ const AddDialogue = ({
   AddWorker 
 }) => (
    <Dialog
-        modal={true}
+        modal
         open={openAdd}
         onRequestClose={handleCloseAdd}
-        autoScrollBodyContent={true}>
+        autoScrollBodyContent>
 
-        <If condition={ !workerValue && !managerValue }>
+        <If condition={!workerValue && !managerValue}>
           <Then>
             <div>
-              <RaisedButton label="Worker" onClick={AddWorker} secondary={true} style={style} />
-              <RaisedButton label="Manager" onClick={AddManager} secondary={true} style={style} />
+              <RaisedButton label="Worker" onClick={AddWorker} secondary style={style} />
+              <RaisedButton label="Manager" onClick={AddManager} secondary style={style} />
             </div>
           </Then>
         </If>
@@ -45,7 +45,7 @@ const AddDialogue = ({
         <div style={styleFlatButtonButton}>
           <FlatButton
             label="Close"
-            primary={true}
+            primary
             onTouchTap={handleCloseAdd}
             />
         </div>
