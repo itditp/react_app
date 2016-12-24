@@ -88,12 +88,9 @@ class ListPage extends React.Component {
 				margin: 5,
 				float: 'right'
 			};
-			const styleDiv = {
-				margin: 103
-			};
 
 			return(
-				<div style={styleDiv}>
+				<div>
 					<div>
 						<FloatingActionButton 
 							mini 

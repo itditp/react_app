@@ -45,7 +45,7 @@ class DialogueBox extends Component {
 			modal={false}
 			onRequestClose={this.toggleModal}>
 
-			{this.props.currentMan.isWorker &&<WorkerDetail lunchTimeAtEnd={this.props.currentMan.lunchTimeAtEnd} lunchTimeAtBegin={this.props.currentMan.lunchTimeAtBegin} currentMan={this.props.currentMan}/>}
+			{this.props.currentMan.isWorker &&<WorkerDetail currentMan={this.props.currentMan}/>}
 
 			<FlatButton label="Close" primary onClick={this.toggleModal} style={style} />
 			</Dialog>

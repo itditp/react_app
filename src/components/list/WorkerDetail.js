@@ -1,7 +1,7 @@
 import React, {PropTypes} from 'react';
 
 
-const WorkerDetail = ({currentMan, lunchTimeAtEnd, lunchTimeAtBegin}) => (
+const WorkerDetail = ({currentMan}) => (
   <div className="workerDetail">
     <h3> This is worker.</h3>
     <p>firstName: {currentMan.firstName}</p>
@@ -9,7 +9,7 @@ const WorkerDetail = ({currentMan, lunchTimeAtEnd, lunchTimeAtBegin}) => (
     <p>patronymic: {currentMan.patronymic}</p>
     <p>payment: {currentMan.payment}$</p>
     <p>seatNumber: {currentMan.seatNumber}</p>
-    <p>lunchTime: from {lunchTimeAtBegin.getHours()}:{lunchTimeAtBegin.getMinutes()} to {lunchTimeAtEnd.getHours()}:{lunchTimeAtEnd.getMinutes()}</p>
+    <p>lunchTime: from {currentMan.lunchTimeAtBegin.toLocaleTimeString('ru', { hour: 'numeric', minute: 'numeric' })} to {currentMan.lunchTimeAtEnd.toLocaleTimeString('ru', { hour: 'numeric', minute: 'numeric' })}</p>
   </div>
 );
 
@@ -20,5 +20,3 @@ WorkerDetail.propTypes = {
 };
 
 export default WorkerDetail;
-
-
