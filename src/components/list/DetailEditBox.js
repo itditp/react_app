@@ -33,7 +33,14 @@ class DetailEditBox extends Component {
 		this.updateSubmitWorker = this.updateSubmitWorker.bind(this);
 
 		this.editManager = this.editManager.bind(this);
+		this.updateSubmitManager = this.updateSubmitManager.bind(this);
 
+	}
+
+	updateSubmitManager(manager) {
+		event.preventDefault();
+		this.props.manageractions.updateManager(manager);
+		this.toggleModal();
 	}
 
 	editManager() {
@@ -44,8 +51,9 @@ class DetailEditBox extends Component {
 	}
 
 	updateSubmitWorker(worker) {
-			event.preventDefault();
-			this.props.workeractions.updateWorker(worker);
+		event.preventDefault();
+		this.props.workeractions.updateWorker(worker);
+		this.toggleModal();
 	}
 
 	editWorker() {
@@ -85,7 +93,7 @@ class DetailEditBox extends Component {
 
 				<Dialog 
 					open={this.state.showModal}
-					modal={false}
+					modal
 					onRequestClose={this.toggleModal}
 					autoScrollBodyContent>
 
@@ -93,7 +101,7 @@ class DetailEditBox extends Component {
 					{this.state.editWorkerValue && <InitializeWorkerEditForm onSubmit={this.updateSubmitWorker} editWorker={this.editWorker} currentMan={this.props.currentMan}/>}
 
 					{this.state.detailManagerValue && this.props.currentMan.isManager && <ManagerDetail editManager={this.editManager} currentMan={this.props.currentMan}/>}
-					{this.state.editManagerValue && <InitializeManagerEditForm editManager={this.editManager} currentMan={this.props.currentMan}/>}
+					{this.state.editManagerValue && <InitializeManagerEditForm onSubmit={this.updateSubmitManager} editManager={this.editManager} currentMan={this.props.currentMan}/>}
 
 					<FlatButton label="Close" primary onClick={this.toggleModal} style={style} />
 				</Dialog>

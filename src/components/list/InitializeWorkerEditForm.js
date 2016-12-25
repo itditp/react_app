@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { PropTypes } from 'react';
 import { connect } from 'react-redux';
 import { Field, reduxForm } from 'redux-form';
 import { TimePicker, TextField } from 'redux-form-material-ui';
@@ -17,7 +17,7 @@ let InitializeWorkerEditForm = props => {
       <div>
         <FlatButton style={style} label="Save" onClick={handleSubmit} disabled={pristine || submitting}/>
         <FlatButton style={style} label="Undo Changes" disabled={pristine || submitting} onClick={reset}/>
-         <FlatButton style={style} onClick={editWorker} label="Back" />
+        <FlatButton style={style} onClick={editWorker} label="Back" />
       </div>
               <div>
          <Field name="firstName"
@@ -84,8 +84,12 @@ InitializeWorkerEditForm = reduxForm({
 // You have to connect() to any reducers that you wish to connect to yourself
 InitializeWorkerEditForm = connect(
   (state, ownProps) => ({
-    initialValues: ownProps.currentMan   
+    initialValues: ownProps.currentMan
   })
 )(InitializeWorkerEditForm);
+
+InitializeWorkerEditForm.propTypes = {
+  editWorker: PropTypes.func.isRequired
+};
 
 export default InitializeWorkerEditForm;

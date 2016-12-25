@@ -17,7 +17,6 @@ export function saveWorker(newWorker) {
 
 export function updateWorker(worker) {
 	return function (dispatch) {
-		console.log(worker);
 		return dispatch(updateWorkerSuccess(worker));
 	};
 }

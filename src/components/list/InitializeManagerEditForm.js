@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { PropTypes } from 'react';
 import { connect } from 'react-redux';
 import { Field, reduxForm } from 'redux-form';
 import { TimePicker, TextField } from 'redux-form-material-ui';
@@ -13,7 +13,7 @@ let InitializeManagerEditForm = props => {
   const positiveNumber = value => value < 0 ? 'Only positiveNumber' : undefined;
 
   return (
-    <form onSubmit={handleSubmit}>
+    <form>
       <div>
         <FlatButton style={style} label="Save" onClick={handleSubmit} disabled={pristine || submitting}/>
         <FlatButton style={style} label="Undo Changes" disabled={pristine || submitting} onClick={reset}/>
@@ -71,5 +71,10 @@ InitializeManagerEditForm = connect(
     initialValues: ownProps.currentMan   
   })
 )(InitializeManagerEditForm);
+
+InitializeManagerEditForm.propTypes = {
+  handleSubmit: PropTypes.func.isRequired,
+  editManager: PropTypes.func.isRequired
+};
 
 export default InitializeManagerEditForm;

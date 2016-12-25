@@ -4,8 +4,8 @@ export function createManagerSuccess(newManager) {
   return {type: types.CREATE_MANAGER_SUCCESS, newManager};
 }
 
-export function updateManagerSuccess(newManager) {
-  return {type: types.UPDATE_MANAGER_SUCCESS, newManager};
+export function updateManagerSuccess(manager) {
+  return {type: types.UPDATE_MANAGER_SUCCESS, manager};
 }
 
 export function saveManager(newManager) {
@@ -14,3 +14,8 @@ export function saveManager(newManager) {
 	};
 }
 
+export function updateManager(manager) {
+	return function (dispatch) {
+		return dispatch(updateManagerSuccess(manager));
+	};
+}

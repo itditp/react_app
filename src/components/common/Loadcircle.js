@@ -6,8 +6,8 @@ const style = {
   marginTop: 200
 };
 
-const LoadingСircle = () => (
+const Loadcircle = () => (
     <CircularProgress style={style} />
 );
 
-export default LoadingСircle;
+export default Loadcircle;

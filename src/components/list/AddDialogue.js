@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { PropTypes } from 'react';
 import Dialog from 'material-ui/Dialog';
 import FlatButton from 'material-ui/FlatButton';
 import WorkerForm from './WorkerForm';
@@ -51,5 +51,17 @@ const AddDialogue = ({
         </div>
       </Dialog>
 );
+
+AddDialogue.propTypes = {
+  handleSubmitWorker: PropTypes.func.isRequired,
+  workerValue: PropTypes.bool.isRequired,
+  managerValue: PropTypes.bool.isRequired,
+  backToCoice: PropTypes.func.isRequired,
+  handleSubmitManager: PropTypes.func.isRequired,
+  openAdd: PropTypes.bool.isRequired,
+  handleCloseAdd: PropTypes.func.isRequired,
+  AddManager: PropTypes.func.isRequired,
+  AddWorker: PropTypes.func.isRequired
+};
 
 export default AddDialogue;

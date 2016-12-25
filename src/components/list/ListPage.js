@@ -11,14 +11,16 @@ import FloatingActionButton from 'material-ui/FloatingActionButton';
 import AddDialogue from './AddDialogue';
 import ListStaff from './ListStaff';
 
+
 class ListPage extends React.Component {
+
 	constructor(props, context) {
 		super(props, context);
 
 		this.state = {
 			openAdd: false,
-			workerValue: null,
-			managerValue: null
+			workerValue: false,
+			managerValue: false
 		};
 
 		//for  addModalWindow:
@@ -35,109 +37,109 @@ class ListPage extends React.Component {
 		this.backToCoice = this.backToCoice.bind(this);
 	}
 
-		AddWorker() {
-			this.setState({
-				workerValue: 1,
-				managerValue: null
-			});
-		}
+	AddWorker() {
+		this.setState({
+			workerValue: true,
+			managerValue: false
+		});
+	}
 
-		AddManager() {
-			this.setState({
-				workerValue: null,
-				managerValue: 1
-			});
-		}
-		handleOpenAdd() {
-			this.setState({openAdd: true});
-		}
+	AddManager() {
+		this.setState({
+			workerValue: false,
+			managerValue: true
+		});
+	}
+	handleOpenAdd() {
+		this.setState({openAdd: true});
+	}
 
-		handleCloseAdd() {
-			this.setState({
-				openAdd: false,
-				workerValue: null,
-				managerValue: null
-			});
-		}
+	handleCloseAdd() {
+		this.setState({
+			openAdd: false,
+			workerValue: false,
+			managerValue: false
+		});
+	}
 
-		handleSubmitWorker(newWorker) {
-			event.preventDefault();
-			this.props.workeractions.saveWorker(newWorker);
-			this.handleCloseAdd();
-		}
+	handleSubmitWorker(newWorker) {
+		event.preventDefault();
+		this.props.workeractions.saveWorker(newWorker);
+		this.handleCloseAdd();
+	}
 
-		handleSubmitManager(newManager) {
-			event.preventDefault();
-			this.props.manageractions.saveManager(newManager);
-			this.handleCloseAdd();
-		}
+	handleSubmitManager(newManager) {
+		event.preventDefault();
+		this.props.manageractions.saveManager(newManager);
+		this.handleCloseAdd();
+	}
 
-		backToCoice() {
-			this.setState({
-				workerValue: null,
-				managerValue: null
-			});
-		}
+	backToCoice() {
+		this.setState({
+			workerValue: false,
+			managerValue: false
+		});
+	}
 
-		render() {
+	render() {
 
-			const workers = this.props.workers;
-			const managers = this.props.managers;
-			const staff = workers.concat(managers);
-			const styleFloatingActionButton = {
-				margin: 5,
-				float: 'right'
-			};
+		const workers = this.props.workers;
+		const managers = this.props.managers;
+		const staff = workers.concat(managers);
+		const styleFloatingActionButton = {
+			margin: 5,
+			float: 'right'
+		};
 
-			return(
+		return(
+			<div>
 				<div>
-					<div>
-						<FloatingActionButton 
-							mini 
-							style={styleFloatingActionButton} 
-							onTouchTap={this.handleOpenAdd}>
-							<ContentAdd />
-						</FloatingActionButton>
+					<FloatingActionButton 
+						mini 
+						style={styleFloatingActionButton} 
+						onTouchTap={this.handleOpenAdd}>
+						<ContentAdd />
+					</FloatingActionButton>
 
-						<AddDialogue   /*modalWindow(add stuff)*/
-							openAdd={this.state.openAdd}
-							workerValue={this.state.workerValue}
-							managerValue={this.state.managerValue}
-							handleSubmitWorker={this.handleSubmitWorker}
-							handleSubmitManager={this.handleSubmitManager}
-							handleCloseAdd={this.handleCloseAdd}
-							AddWorker={this.AddWorker}
-							AddManager={this.AddManager}
-							backToCoice={this.backToCoice}/>
-					</div>
-					<div>
-						<ListStaff staff={staff}/>
-					</div>
+					<AddDialogue   /*modalWindow(add stuff)*/
+						openAdd={this.state.openAdd}
+						workerValue={this.state.workerValue}
+						managerValue={this.state.managerValue}
+						handleSubmitWorker={this.handleSubmitWorker}
+						handleSubmitManager={this.handleSubmitManager}
+						handleCloseAdd={this.handleCloseAdd}
+						AddWorker={this.AddWorker}
+						AddManager={this.AddManager}
+						backToCoice={this.backToCoice}/>
 				</div>
-				);
-		}
+				<div>
+					<ListStaff staff={staff}/>
+				</div>
+			</div>
+			);
 	}
+}
 
-	ListPage.propTypes = {
-		workers: PropTypes.array.isRequired,
-		workeractions: PropTypes.object.isRequired,
-		manageractions: PropTypes.object.isRequired,
-		managers: PropTypes.array.isRequired
+ListPage.propTypes = {
+	workers: PropTypes.array.isRequired,
+	workeractions: PropTypes.object.isRequired,
+	manageractions: PropTypes.object.isRequired,
+	managers: PropTypes.array.isRequired
+};
+
+function mapStateToProps(state, ownProps) {
+
+	return {
+		workers: state.workers,
+		managers: state.managers
 	};
+}
 
-	function mapStateToProps(state, ownProps) {
+function mapDispatchToProps(dispatch) {
+	return {
+		workeractions: bindActionCreators(workerActions, dispatch),
+		manageractions: bindActionCreators(managerActions, dispatch)
+	};
+}
 
-		return {
-			workers: state.workers,
-			managers: state.managers
-		};
-	}
-
-	function mapDispatchToProps(dispatch) {
-		return {
-			workeractions: bindActionCreators(workerActions, dispatch),
-			manageractions: bindActionCreators(managerActions, dispatch)
-		};
-	}
-
-	export default connect(mapStateToProps, mapDispatchToProps)(ListPage);
+export default connect(mapStateToProps, mapDispatchToProps)(ListPage);

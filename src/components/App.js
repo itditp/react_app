@@ -18,14 +18,14 @@ class App extends React.Component {
 
 		return (
 			<MuiThemeProvider muiTheme={muiTheme}>
-			<div>
-				<Paper className="wrapper" zDepth={3}>
-					{this.props.children}
-				</Paper>
-				<TaskBar/>
+				<div>
+					<Paper className="wrapper" zDepth={3}>
+						{this.props.children}
+					</Paper>
+					<TaskBar/>
 				</div>
 			</MuiThemeProvider>
-			);
+		);
 	}
 }
 

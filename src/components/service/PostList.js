@@ -1,6 +1,6 @@
 import React, {PropTypes} from 'react';
 import Paper from 'material-ui/Paper';
-import LoadingСircle from '../common/LoadingСircle';
+import Loadcircle from '../common/Loadcircle';
 
 const style = {
   height: 400,
@@ -25,7 +25,7 @@ const PostList = ({posts, loading}) => {
     <div>
       <h1 style={styleForTitle}>Posts:</h1>
       <Paper style={style} zDepth={3}>
-        {loading && <LoadingСircle/>}
+        {loading && <Loadcircle/>}
         {posts.map(post =>
           <Paper style={styleForPost} key={post.id} zDepth={2}>
             <span>ID:</span>{post.id}<br/>
