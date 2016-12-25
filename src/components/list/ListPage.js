@@ -19,21 +19,21 @@ class ListPage extends React.Component {
 			openAdd: false,
 			workerValue: null,
 			managerValue: null
-
 		};
-			//for  addModalWindow:
-			this.handleOpenAdd = this.handleOpenAdd.bind(this);
-			this.handleCloseAdd = this.handleCloseAdd.bind(this);
 
-			//for saveNewStaff:
-			this.handleSubmitWorker = this.handleSubmitWorker.bind(this);
-			this.handleSubmitManager = this.handleSubmitManager.bind(this);
+		//for  addModalWindow:
+		this.handleOpenAdd = this.handleOpenAdd.bind(this);
+		this.handleCloseAdd = this.handleCloseAdd.bind(this);
 
-			this.AddWorker = this.AddWorker.bind(this);
-			this.AddManager = this.AddManager.bind(this);
+		//for saveNewStaff:
+		this.handleSubmitWorker = this.handleSubmitWorker.bind(this);
+		this.handleSubmitManager = this.handleSubmitManager.bind(this);
 
-			this.backToCoice = this.backToCoice.bind(this);
-		}
+		this.AddWorker = this.AddWorker.bind(this);
+		this.AddManager = this.AddManager.bind(this);
+
+		this.backToCoice = this.backToCoice.bind(this);
+	}
 
 		AddWorker() {
 			this.setState({

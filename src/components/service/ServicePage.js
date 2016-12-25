@@ -14,7 +14,7 @@ class ServicePage extends React.Component {
 	render() {
 			
 		const posts = this.props.posts;
-		const cutPosts = posts.slice(0, posts.length-1); 	//cutLastPost
+		const cutPosts = posts.slice(0, posts.length); 	//cutLastPost
 
 		return (
 			<div>

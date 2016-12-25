@@ -3,9 +3,9 @@ export default {
 	workers: [
 		{
 			id: '434536565564',
-			firstName: 'Dory',
-			lastName: 'Mouse',
-			patronymic: 'Boby',
+			firstName: 'Андрей',
+			lastName: 'Васильков',
+			patronymic: 'Владимирович',
 			payment: 100,
 			seatNumber: 1,
 			lunchTimeAtBegin: new Date(),
@@ -14,9 +14,9 @@ export default {
 		},
 		{
 			id: '6345635436354',
-			firstName: 'Cory',
-			lastName: 'House',
-			patronymic: 'Doby',
+			firstName: 'Зинаида',
+			lastName: 'Тюмина',
+			patronymic: 'Николаевна',
 			payment: 200,
 			seatNumber: 2,
 			lunchTimeAtBegin: new Date(),
@@ -27,18 +27,18 @@ export default {
 	managers: [
 		{
 			id: '7647575647457654',
-			firstName: 'Fory',
-			lastName: 'Rouse',
-			patronymic: 'Voby',
+			firstName: 'Леонид',
+			lastName: 'Шмель',
+			patronymic: 'Степанович',
 			welcomTimeAtBegin: new Date(),
 			welcomTimeAtEnd: new Date(),
 			isManager: true
 		},
 		{
 			id: '345436576765',
-			firstName: 'Billy',
-			lastName: 'Sato',
-			patronymic: 'Vigi',
+			firstName: 'Дмитрий',
+			lastName: 'Ганин',
+			patronymic: 'Андреевич',
 			welcomTimeAtBegin: new Date(),
 			welcomTimeAtEnd: new Date(),
 			isManager: true

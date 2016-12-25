@@ -6,7 +6,7 @@ export default function managerReducer(state = initialState.managers, action) {
     case types.CREATE_MANAGER_SUCCESS:
       return [
         ...state,
-        Object.assign({}, action.newManager, {id: + new Date})
+        Object.assign({}, action.newManager, {id: + new Date, isManager: true})
       ];
 
     case types.UPDATE_MANAGER_SUCCESS:

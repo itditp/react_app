@@ -1,6 +1,7 @@
 import React, { Component, PropTypes } from 'react';
 import Paper from 'material-ui/Paper';
-import DialogueBox from './DialogueBox';
+import DetailEditBox from './DetailEditBox';
+import {List} from 'material-ui/List';
 
 
 class ListStaff extends Component {
@@ -23,7 +24,7 @@ class ListStaff extends Component {
 
     return(
       <div key={currentMan.id}>
-        <DialogueBox currentMan={currentMan}/>
+        <DetailEditBox currentMan={currentMan}/>
       </div>
     );
   }
@@ -35,9 +36,9 @@ class ListStaff extends Component {
 
     return(
       <div>
-        <div>
+        <List>
           {staff.sort((a, b) => a.firstName.toLowerCase() > b.firstName.toLowerCase()).map(self.renderRecipeList)}
-        </div>
+        </List>
       </div>
     );
   }

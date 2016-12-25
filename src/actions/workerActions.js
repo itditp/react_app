@@ -4,9 +4,10 @@ export function createWorkerSuccess(newWorker) {
   return {type: types.CREATE_WORKER_SUCCESS, newWorker};
 }
 
-export function updateWorkerSuccess(newWorker) {
-  return {type: types.UPDATE_WORKER_SUCCESS, newWorker};
+export function updateWorkerSuccess(worker) {
+  return {type: types.UPDATE_WORKER_SUCCESS, worker};
 }
+
 
 export function saveWorker(newWorker) {
 	return function (dispatch) {
@@ -14,3 +15,9 @@ export function saveWorker(newWorker) {
 	};
 }
 
+export function updateWorker(worker) {
+	return function (dispatch) {
+		console.log(worker);
+		return dispatch(updateWorkerSuccess(worker));
+	};
+}

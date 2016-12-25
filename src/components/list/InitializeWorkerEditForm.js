@@ -1,25 +1,25 @@
-import React, { Component, PropTypes } from 'react';
+import React from 'react';
+import { connect } from 'react-redux';
 import { Field, reduxForm } from 'redux-form';
 import { TimePicker, TextField } from 'redux-form-material-ui';
 import FlatButton from 'material-ui/FlatButton';
 
 
-let WorkerForm = class WorkerForm extends Component {
-  render() {
+let InitializeWorkerEditForm = props => {
+  
+  const { handleSubmit, pristine, reset, submitting, editWorker } = props;
+  const style = {float: 'right'};
+  const required = value => value == null ? 'Required' : undefined;
+  const positiveNumber = value => value < 0 ? 'Only positiveNumber' : undefined;
 
-    const style = {float: 'right'};
-    const required = value => value == null ? 'Required' : undefined;
-    const positiveNumber = value => value < 0 ? 'Only positiveNumber' : undefined;
-    const { handleSubmit, backToCoice } = this.props;
-
-    
-    return (
-      <form>
-        <div>
-            <FlatButton style={style} onTouchTap={handleSubmit} label="Save" />
-            <FlatButton style={style} onClick={backToCoice} label="Back" />
-        </div>
-        <div>
+  return (
+    <form>
+      <div>
+        <FlatButton style={style} label="Save" onClick={handleSubmit} disabled={pristine || submitting}/>
+        <FlatButton style={style} label="Undo Changes" disabled={pristine || submitting} onClick={reset}/>
+         <FlatButton style={style} onClick={editWorker} label="Back" />
+      </div>
+              <div>
          <Field name="firstName"
             component={TextField}
             hintText="firstName"
@@ -72,19 +72,20 @@ let WorkerForm = class WorkerForm extends Component {
             floatingLabelText="lunchTimeAtEnd"
             validate={required}/>
         </div>
-      </form>
-    );
-  }
+    </form>
+  );
 };
 
-WorkerForm.propTypes = {
-    backToCoice: PropTypes.func.isRequired,
-    handleSubmit: PropTypes.func.isRequired
-};
+// Decorate with reduxForm(). It will read the initialValues prop provided by connect()
+InitializeWorkerEditForm = reduxForm({
+  form: 'InitializeWorkerEditForm'  // a unique identifier for this form
+})(InitializeWorkerEditForm);
 
-// Decorate the form component
-WorkerForm = reduxForm({
-  form: 'worker' // a unique name for this form
-})(WorkerForm);
+// You have to connect() to any reducers that you wish to connect to yourself
+InitializeWorkerEditForm = connect(
+  (state, ownProps) => ({
+    initialValues: ownProps.currentMan   
+  })
+)(InitializeWorkerEditForm);
 
-export default WorkerForm;
+export default InitializeWorkerEditForm;

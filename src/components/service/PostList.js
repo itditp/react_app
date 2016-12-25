@@ -17,7 +17,7 @@ const styleForPost = {
 
 const styleForTitle = {
   textAlign: "center",
-  color: "green"
+  color: "#00BCD4"
 };
 
 const PostList = ({posts, loading}) => {

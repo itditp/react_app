@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { Component, PropTypes } from 'react';
 import { Field, reduxForm } from 'redux-form';
 import { TimePicker, TextField } from 'redux-form-material-ui';
 import FlatButton from 'material-ui/FlatButton';
@@ -17,6 +17,7 @@ let ManagerForm = class ManagerForm extends Component {
         <form onSubmit={handleSubmit}>
           <div>
             <FlatButton style={style} onTouchTap={handleSubmit} label="Save" />
+            <FlatButton style={style} onClick={backToCoice} label="Back" />
           </div>
           <div>
            <Field name="firstName"
@@ -42,6 +43,7 @@ let ManagerForm = class ManagerForm extends Component {
           <div>
             <Field name="welcomTimeAtBegin"
               component={TimePicker}
+              format={null}
               hintText="welcomTimeAtBegin" 
               floatingLabelText="welcomTimeAtBegin"
               validate={required}/>
@@ -49,16 +51,21 @@ let ManagerForm = class ManagerForm extends Component {
           <div>
             <Field name="welcomTimeAtEnd"
               component={TimePicker}
+              format={null}
               hintText="welcomTimeAtEnd" 
               floatingLabelText="welcomTimeAtEnd"
               validate={required}/>
           </div>
-          <FlatButton style={style} onClick={backToCoice} label="Back" />
         </form>
       </div>
     );
   }
-}
+};
+
+ManagerForm.propTypes = {
+    backToCoice: PropTypes.func.isRequired,
+    handleSubmit: PropTypes.func.isRequired
+};
 
 // Decorate the form component
 ManagerForm = reduxForm({
