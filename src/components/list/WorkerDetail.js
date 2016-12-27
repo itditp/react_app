@@ -12,7 +12,7 @@ const WorkerDetail = ({currentMan, editWorker}) => (
     <p>lastName: {currentMan.lastName}</p>
     <p>payment: {currentMan.payment}$</p>
     <p>seatNumber: {currentMan.seatNumber}</p>
-    <p>lunchTime: from {currentMan.lunchTimeAtBegin.toLocaleTimeString('ru', { hour: 'numeric', minute: 'numeric' })} to {currentMan.lunchTimeAtEnd.toLocaleTimeString('ru', { hour: 'numeric', minute: 'numeric' })}</p>
+    <p>lunchTime: from {currentMan.lunchTime.start.toLocaleTimeString('ru', { hour: 'numeric', minute: 'numeric' })} to {currentMan.lunchTime.end.toLocaleTimeString('ru', { hour: 'numeric', minute: 'numeric' })}</p>
   </div>
 );
 

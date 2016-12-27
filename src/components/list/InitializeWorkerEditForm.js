@@ -57,19 +57,19 @@ let InitializeWorkerEditForm = props => {
             validate={[required, positiveNumber]}/>
         </div>
         <div>
-          <Field name="lunchTimeAtBegin"
+          <Field name="lunchTime.start"
             component={TimePicker}
             format={null}   
-            hintText="lunchTimeAtBegin" 
-            floatingLabelText="lunchTimeAtBegin"
+            hintText="lunchTimeStart" 
+            floatingLabelText="lunchTimeStart"
             validate={required}/>
         </div>
         <div>
-          <Field name="lunchTimeAtEnd"
+          <Field name="lunchTime.end"
             component={TimePicker}
             format={null}
-            hintText="lunchTimeAtEnd" 
-            floatingLabelText="lunchTimeAtEnd"
+            hintText="lunchTimeEnd" 
+            floatingLabelText="lunchTimeEnd"
             validate={required}/>
         </div>
     </form>

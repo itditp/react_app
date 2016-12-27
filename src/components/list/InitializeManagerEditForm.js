@@ -41,19 +41,19 @@ let InitializeManagerEditForm = props => {
             validate={required}/>
         </div>
         <div>
-          <Field name="welcomTimeAtBegin"
+          <Field name="welcomTime.start"
             component={TimePicker}
             format={null}   
-            hintText="welcomTimeAtBegin" 
-            floatingLabelText="welcomTimeAtBegin"
+            hintText="welcomTimeStart" 
+            floatingLabelText="welcomTimeStart"
             validate={required}/>
         </div>
         <div>
-          <Field name="welcomTimeAtEnd"
+          <Field name="welcomTime.end"
             component={TimePicker}
             format={null}
-            hintText="welcomTimeAtEnd" 
-            floatingLabelText="welcomTimeAtEnd"
+            hintText="welcomTimeEnd" 
+            floatingLabelText="welcomTimeEnd"
             validate={required}/>
         </div>
     </form>

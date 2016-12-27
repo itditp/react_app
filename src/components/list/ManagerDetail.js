@@ -10,7 +10,7 @@ const ManagerDetail = ({currentMan, editManager}) => (
     <p>firstName: {currentMan.firstName}</p>
     <p>patronymic: {currentMan.patronymic}</p>
     <p>lastName: {currentMan.lastName}</p>
-    <p>welcomTime: from {currentMan.welcomTimeAtBegin.toLocaleTimeString('ru', { hour: 'numeric', minute: 'numeric' })} to {currentMan.welcomTimeAtBegin.toLocaleTimeString('ru', { hour: 'numeric', minute: 'numeric' })}</p>
+    <p>welcomTime: from {currentMan.welcomTime.start.toLocaleTimeString('ru', { hour: 'numeric', minute: 'numeric' })} to {currentMan.welcomTime.end.toLocaleTimeString('ru', { hour: 'numeric', minute: 'numeric' })}</p>
   </div>
 );
 
