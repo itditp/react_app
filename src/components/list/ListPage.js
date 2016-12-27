@@ -10,6 +10,7 @@ import ContentAdd from 'material-ui/svg-icons/content/add';
 import FloatingActionButton from 'material-ui/FloatingActionButton';
 import AddDialogue from './AddDialogue';
 import ListStaff from './ListStaff';
+import toastr from 'toastr';
 
 
 class ListPage extends React.Component {
@@ -66,12 +67,15 @@ class ListPage extends React.Component {
 		event.preventDefault();
 		this.props.workeractions.saveWorker(newWorker);
 		this.handleCloseAdd();
+		toastr.success('Worker saved');
+
 	}
 
 	handleSubmitManager(newManager) {
 		event.preventDefault();
 		this.props.manageractions.saveManager(newManager);
 		this.handleCloseAdd();
+		toastr.success('Manager saved');
 	}
 
 	backToCoice() {

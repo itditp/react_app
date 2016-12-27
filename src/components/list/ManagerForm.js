@@ -10,13 +10,13 @@ let ManagerForm = class ManagerForm extends Component {
 
     const style = {float: 'right'};
     const required = value => value == null ? 'Required' : undefined;
-    const { handleSubmit, backToCoice } = this.props;
+    const { handleSubmit, submitting, pristine, backToCoice } = this.props;
 
     return (
       <div>
         <form onSubmit={handleSubmit}>
           <div>
-            <FlatButton style={style} onTouchTap={handleSubmit} label="Save" />
+            <FlatButton style={style} disabled={pristine || submitting} onTouchTap={handleSubmit} label="Save" />
             <FlatButton style={style} onClick={backToCoice} label="Back" />
           </div>
           <div>
@@ -64,7 +64,9 @@ let ManagerForm = class ManagerForm extends Component {
 
 ManagerForm.propTypes = {
     backToCoice: PropTypes.func.isRequired,
-    handleSubmit: PropTypes.func.isRequired
+    handleSubmit: PropTypes.func.isRequired,
+    submitting: PropTypes.bool.isRequired,
+    pristine: PropTypes.bool.isRequired
 };
 
 // Decorate the form component

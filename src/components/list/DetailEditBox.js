@@ -11,6 +11,7 @@ import {bindActionCreators} from 'redux';
 import * as workerActions from '../../actions/workerActions';
 import * as managerActions from '../../actions/managerActions';
 import {connect} from 'react-redux';
+import toastr from 'toastr';
 
 
 class DetailEditBox extends Component {
@@ -41,6 +42,7 @@ class DetailEditBox extends Component {
 		event.preventDefault();
 		this.props.manageractions.updateManager(manager);
 		this.toggleModal();
+		toastr.success('Manager updated');
 	}
 
 	editManager() {
@@ -54,6 +56,7 @@ class DetailEditBox extends Component {
 		event.preventDefault();
 		this.props.workeractions.updateWorker(worker);
 		this.toggleModal();
+		toastr.success('Worker updated');
 	}
 
 	editWorker() {

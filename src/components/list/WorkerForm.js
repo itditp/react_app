@@ -10,13 +10,13 @@ let WorkerForm = class WorkerForm extends Component {
     const style = {float: 'right'};
     const required = value => value == null ? 'Required' : undefined;
     const positiveNumber = value => value < 0 ? 'Only positiveNumber' : undefined;
-    const { handleSubmit, backToCoice } = this.props;
+    const { handleSubmit, submitting, pristine, backToCoice } = this.props;
 
     
     return (
       <form>
         <div>
-            <FlatButton style={style} onTouchTap={handleSubmit} label="Save" />
+            <FlatButton style={style} disabled={pristine || submitting} onTouchTap={handleSubmit} label="Save" />
             <FlatButton style={style} onClick={backToCoice} label="Back" />
         </div>
         <div>
@@ -79,7 +79,9 @@ let WorkerForm = class WorkerForm extends Component {
 
 WorkerForm.propTypes = {
     backToCoice: PropTypes.func.isRequired,
-    handleSubmit: PropTypes.func.isRequired
+    handleSubmit: PropTypes.func.isRequired,
+    submitting: PropTypes.bool.isRequired,
+    pristine: PropTypes.bool.isRequired
 };
 
 // Decorate the form component
