@@ -31,8 +31,12 @@ export default class TaskBar extends React.Component {
   }
 
   render() {
+    const style = {
+      height: 50
+    };
+
     return (
-      <Tabs onChange={this.hanldleChange} initialSelectedIndex={this.state.initalTab}>
+      <Tabs tabItemContainerStyle={style} onChange={this.hanldleChange} initialSelectedIndex={this.state.initalTab}>
         <Tab value={0} label="server"/>
         <Tab value={1} label="list"/>
       </Tabs>

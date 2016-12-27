@@ -116,7 +116,7 @@ class ListPage extends React.Component {
 					<ListStaff staff={staff}/>
 				</div>
 			</div>
-			);
+		);
 	}
 }
 

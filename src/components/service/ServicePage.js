@@ -18,7 +18,7 @@ class ServicePage extends React.Component {
 
 		return (
 			<div>
-			<PostList loading={this.props.loading} posts={cutPosts} />
+				<PostList loading={this.props.loading} posts={cutPosts} />
 			</div>
 		);
 	}

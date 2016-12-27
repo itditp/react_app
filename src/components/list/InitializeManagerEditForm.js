@@ -73,8 +73,11 @@ InitializeManagerEditForm = connect(
 )(InitializeManagerEditForm);
 
 InitializeManagerEditForm.propTypes = {
-  handleSubmit: PropTypes.func.isRequired,
-  editManager: PropTypes.func.isRequired
+  editManager: PropTypes.func.isRequired,
+  reset: PropTypes.bool,
+  pristine: PropTypes.bool,
+  submitting: PropTypes.bool,
+  handleSubmit: PropTypes.func
 };
 
 export default InitializeManagerEditForm;

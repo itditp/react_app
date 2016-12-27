@@ -12,14 +12,12 @@ const muiTheme = getMuiTheme({
 
 });
 
-
 class App extends React.Component {
 	render() {
-
 		return (
 			<MuiThemeProvider muiTheme={muiTheme}>
 				<div>
-					<Paper className="wrapper" zDepth={3}>
+					<Paper className="contentApp" zDepth={3}>
 						{this.props.children}
 					</Paper>
 					<TaskBar/>

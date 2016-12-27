@@ -89,7 +89,11 @@ InitializeWorkerEditForm = connect(
 )(InitializeWorkerEditForm);
 
 InitializeWorkerEditForm.propTypes = {
-  editWorker: PropTypes.func.isRequired
+  editWorker: PropTypes.func.isRequired,
+  reset: PropTypes.bool,
+  pristine: PropTypes.bool,
+  submitting: PropTypes.bool,
+  handleSubmit: PropTypes.func
 };
 
 export default InitializeWorkerEditForm;

@@ -1,16 +1,18 @@
 /* Styles */
+* {
+  margin: 0;
+  padding: 0;
+}
+
 #app {
   min-width: 550px;
   max-width: 1000px;
   margin: 0 auto;
 }
 
-/*nav {
-  padding-top: 50px;
-}*/
-
-.wrapper {
-  min-height: 300px;
+.contentApp {
+  padding-top: 15px;
+  min-height: calc(100vh - 50px);
 }
 
 span {

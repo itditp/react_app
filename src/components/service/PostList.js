@@ -3,7 +3,7 @@ import Paper from 'material-ui/Paper';
 import Loadcircle from '../common/Loadcircle';
 
 const style = {
-  height: 400,
+  height: 600,
   width: 900,
   margin: "auto",
   overflow: "auto"
@@ -15,27 +15,19 @@ const styleForPost = {
   padding: 10
 };
 
-const styleForTitle = {
-  textAlign: "center",
-  color: "#00BCD4"
-};
-
 const PostList = ({posts, loading}) => {
 	return (
-    <div>
-      <h1 style={styleForTitle}>Posts:</h1>
-      <Paper style={style} zDepth={3}>
-        {loading && <Loadcircle/>}
-        {posts.map(post =>
-          <Paper style={styleForPost} key={post.id} zDepth={2}>
-            <span>ID:</span>{post.id}<br/>
-            <span>Title:</span>{post.title}<br/>
-            <span>Body:</span>{post.body}
-          </Paper>
-          )}
-      </Paper>
-    </div>
-    );
+    <Paper style={style} zDepth={3}>
+      {loading && <Loadcircle/>}
+      {posts.map(post =>
+        <Paper style={styleForPost} key={post.id} zDepth={2}>
+          <span>ID:</span>{post.id}<br/>
+          <span>Title:</span>{post.title}<br/>
+          <span>Body:</span>{post.body}
+        </Paper>
+      )}
+    </Paper>
+  );
 };
 
 PostList.propTypes = {
