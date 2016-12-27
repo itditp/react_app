@@ -3,7 +3,7 @@ import Paper from 'material-ui/Paper';
 import Loadcircle from '../common/Loadcircle';
 
 const style = {
-  height: 600,
+  height: 500,
   width: 900,
   margin: "auto",
   overflow: "auto"

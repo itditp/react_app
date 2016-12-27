@@ -3,14 +3,13 @@ import { connect } from 'react-redux';
 import { Field, reduxForm } from 'redux-form';
 import { TimePicker, TextField } from 'redux-form-material-ui';
 import FlatButton from 'material-ui/FlatButton';
+import validate from './ValidateManager';
 
 
 let InitializeManagerEditForm = props => {
   
   const { handleSubmit, pristine, reset, submitting, editManager } = props;
   const style = {float: 'right'};
-  const required = value => value == null ? 'Required' : undefined;
-  const positiveNumber = value => value < 0 ? 'Only positiveNumber' : undefined;
 
   return (
     <form>
@@ -23,38 +22,33 @@ let InitializeManagerEditForm = props => {
          <Field name="firstName"
             component={TextField}
             hintText="firstName"
-            floatingLabelText="firstName"
-            validate={required}/>
+            floatingLabelText="firstName"/>
         </div>
         <div>
            <Field name="lastName"
             component={TextField}
             hintText="lastName"
-            floatingLabelText="lastName"
-            validate={required}/>
+            floatingLabelText="lastName"/>
         </div>
         <div>
           <Field name="patronymic"
             component={TextField}
             hintText="patronymic"
-            floatingLabelText="patronymic"
-            validate={required}/>
+            floatingLabelText="patronymic"/>
         </div>
         <div>
           <Field name="welcomTime.start"
             component={TimePicker}
             format={null}   
             hintText="welcomTimeStart" 
-            floatingLabelText="welcomTimeStart"
-            validate={required}/>
+            floatingLabelText="welcomTimeStart"/>
         </div>
         <div>
           <Field name="welcomTime.end"
             component={TimePicker}
             format={null}
             hintText="welcomTimeEnd" 
-            floatingLabelText="welcomTimeEnd"
-            validate={required}/>
+            floatingLabelText="welcomTimeEnd"/>
         </div>
     </form>
   );
@@ -62,7 +56,8 @@ let InitializeManagerEditForm = props => {
 
 // Decorate with reduxForm(). It will read the initialValues prop provided by connect()
 InitializeManagerEditForm = reduxForm({
-  form: 'InitializeManagerEditForm'  // a unique identifier for this form
+  form: 'InitializeManagerEditForm',
+  validate
 })(InitializeManagerEditForm);
 
 // You have to connect() to any reducers that you wish to connect to yourself

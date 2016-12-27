@@ -2,16 +2,14 @@ import React, { Component, PropTypes } from 'react';
 import { Field, reduxForm } from 'redux-form';
 import { TimePicker, TextField } from 'redux-form-material-ui';
 import FlatButton from 'material-ui/FlatButton';
+import validate from './ValidateWorker';
 
 
 let WorkerForm = class WorkerForm extends Component {
   render() {
 
     const style = {float: 'right'};
-    const required = value => value == null ? 'Required' : undefined;
-    const positiveNumber = value => value < 0 ? 'Only positiveNumber' : undefined;
     const { handleSubmit, submitting, pristine, backToCoice } = this.props;
-
     
     return (
       <form>
@@ -23,54 +21,47 @@ let WorkerForm = class WorkerForm extends Component {
          <Field name="firstName"
             component={TextField}
             hintText="firstName"
-            floatingLabelText="firstName"
-            validate={required}/>
+            floatingLabelText="firstName"/>
         </div>
         <div>
            <Field name="lastName"
             component={TextField}
             hintText="lastName"
-            floatingLabelText="lastName"
-            validate={required}/>
+            floatingLabelText="lastName"/>
         </div>
         <div>
           <Field name="patronymic"
             component={TextField}
             hintText="patronymic"
-            floatingLabelText="patronymic"
-            validate={required}/>
+            floatingLabelText="patronymic"/>
         </div>
         <div>
          <Field name="payment"
             component={TextField}
             hintText="payment"
             type="number"
-            floatingLabelText="payment"
-            validate={[required, positiveNumber]}/>
+            floatingLabelText="payment"/>
         </div>
         <div>
           <Field name="seatNumber"
             component={TextField}
             hintText="seatNumber"
             type="number"
-            floatingLabelText="seatNumber"
-            validate={[required, positiveNumber]}/>
+            floatingLabelText="seatNumber"/>
         </div>
         <div>
           <Field name="lunchTime.start"
             component={TimePicker}
             format={null}   
             hintText="lunchTimeStart" 
-            floatingLabelText="lunchTimeStart"
-            validate={required}/>
+            floatingLabelText="lunchTimeStart"/>
         </div>
         <div>
           <Field name="lunchTime.end"
             component={TimePicker}
             format={null}
             hintText="lunchTimeEnd" 
-            floatingLabelText="lunchTimeEnd"
-            validate={required}/>
+            floatingLabelText="lunchTimeEnd"/>
         </div>
       </form>
     );
@@ -86,7 +77,8 @@ WorkerForm.propTypes = {
 
 // Decorate the form component
 WorkerForm = reduxForm({
-  form: 'worker' // a unique name for this form
+  form: 'worker',
+  validate // a unique name for this form
 })(WorkerForm);
 
 export default WorkerForm;

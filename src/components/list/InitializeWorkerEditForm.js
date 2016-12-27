@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 import { Field, reduxForm } from 'redux-form';
 import { TimePicker, TextField } from 'redux-form-material-ui';
 import FlatButton from 'material-ui/FlatButton';
+import validate from './ValidateWorker';
 
 
 let InitializeWorkerEditForm = props => {
@@ -23,54 +24,47 @@ let InitializeWorkerEditForm = props => {
          <Field name="firstName"
             component={TextField}
             hintText="firstName"
-            floatingLabelText="firstName"
-            validate={required}/>
+            floatingLabelText="firstName"/>
         </div>
         <div>
            <Field name="lastName"
             component={TextField}
             hintText="lastName"
-            floatingLabelText="lastName"
-            validate={required}/>
+            floatingLabelText="lastName"/>
         </div>
         <div>
           <Field name="patronymic"
             component={TextField}
             hintText="patronymic"
-            floatingLabelText="patronymic"
-            validate={required}/>
+            floatingLabelText="patronymic"/>
         </div>
         <div>
          <Field name="payment"
             component={TextField}
             hintText="payment"
             type="number"
-            floatingLabelText="payment"
-            validate={[required, positiveNumber]}/>
+            floatingLabelText="payment"/>
         </div>
         <div>
           <Field name="seatNumber"
             component={TextField}
             hintText="seatNumber"
             type="number"
-            floatingLabelText="seatNumber"
-            validate={[required, positiveNumber]}/>
+            floatingLabelText="seatNumber"/>
         </div>
         <div>
           <Field name="lunchTime.start"
             component={TimePicker}
             format={null}   
             hintText="lunchTimeStart" 
-            floatingLabelText="lunchTimeStart"
-            validate={required}/>
+            floatingLabelText="lunchTimeStart"/>
         </div>
         <div>
           <Field name="lunchTime.end"
             component={TimePicker}
             format={null}
             hintText="lunchTimeEnd" 
-            floatingLabelText="lunchTimeEnd"
-            validate={required}/>
+            floatingLabelText="lunchTimeEnd"/>
         </div>
     </form>
   );
@@ -78,7 +72,8 @@ let InitializeWorkerEditForm = props => {
 
 // Decorate with reduxForm(). It will read the initialValues prop provided by connect()
 InitializeWorkerEditForm = reduxForm({
-  form: 'InitializeWorkerEditForm'  // a unique identifier for this form
+  form: 'InitializeWorkerEditForm',
+  validate
 })(InitializeWorkerEditForm);
 
 // You have to connect() to any reducers that you wish to connect to yourself
