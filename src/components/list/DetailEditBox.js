@@ -39,7 +39,6 @@ class DetailEditBox extends Component {
 	}
 
 	updateSubmitManager(manager) {
-		event.preventDefault();
 		this.props.manageractions.updateManager(manager);
 		this.toggleModal();
 		toastr.success('Manager updated');
@@ -53,7 +52,6 @@ class DetailEditBox extends Component {
 	}
 
 	updateSubmitWorker(worker) {
-		event.preventDefault();
 		this.props.workeractions.updateWorker(worker);
 		this.toggleModal();
 		toastr.success('Worker updated');
@@ -82,13 +80,13 @@ class DetailEditBox extends Component {
 		const styleForMan = {
 			margin: 'auto',
 			textAlign: "center",
-			maxWidth: 800
+			maxWidth: 500
 		};
 		const style = {float: 'right'};
 
 		return (
 			<div>
-				<ListItem style={styleForMan} onClick={this.toggleModal}>
+				<ListItem  style={styleForMan} onClick={this.toggleModal}>
 					{this.props.currentMan.firstName}{' '}
 					{this.props.currentMan.patronymic}{' '}
 					{this.props.currentMan.lastName}

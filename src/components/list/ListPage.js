@@ -64,7 +64,6 @@ class ListPage extends React.Component {
 	}
 
 	handleSubmitWorker(newWorker) {
-		event.preventDefault();
 		this.props.workeractions.saveWorker(newWorker);
 		this.handleCloseAdd();
 		toastr.success('Worker saved');
@@ -72,7 +71,6 @@ class ListPage extends React.Component {
 	}
 
 	handleSubmitManager(newManager) {
-		event.preventDefault();
 		this.props.manageractions.saveManager(newManager);
 		this.handleCloseAdd();
 		toastr.success('Manager saved');

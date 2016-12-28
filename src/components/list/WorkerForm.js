@@ -10,6 +10,7 @@ let WorkerForm = class WorkerForm extends Component {
 
     const style = {float: 'right'};
     const { handleSubmit, submitting, pristine, backToCoice } = this.props;
+    const required = value => value ? undefined : 'Required';
     
     return (
       <form>
@@ -54,14 +55,16 @@ let WorkerForm = class WorkerForm extends Component {
             component={TimePicker}
             format={null}   
             hintText="lunchTimeStart" 
-            floatingLabelText="lunchTimeStart"/>
+            floatingLabelText="lunchTimeStart"
+            validate={required}/>
         </div>
         <div>
           <Field name="lunchTime.end"
             component={TimePicker}
-            format={null}
             hintText="lunchTimeEnd" 
-            floatingLabelText="lunchTimeEnd"/>
+            floatingLabelText="lunchTimeEnd"
+            format={null}
+            validate={required}/>
         </div>
       </form>
     );
@@ -78,7 +81,7 @@ WorkerForm.propTypes = {
 // Decorate the form component
 WorkerForm = reduxForm({
   form: 'worker',
-  validate // a unique name for this form
+  validate
 })(WorkerForm);
 
 export default WorkerForm;
