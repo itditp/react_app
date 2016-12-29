@@ -52,7 +52,8 @@ Redux https://github.com/reactjs/redux
 
 
 ```sh
-for prodaction: npm run build
-
-for developer: npm start -s
+git clone https://github.com/itditp/task2-React-.git && cd task2-React-
+npm install
+production: npm run build
+developer: npm start -s
 ```
