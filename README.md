@@ -1,5 +1,5 @@
 
-## TASK
+## TASK##
 
 Front-end приложение
 
@@ -51,3 +51,8 @@ Redux https://github.com/reactjs/redux
 
 
 
+```sh
+for prodaction: npm run build
+
+for developer: npm start -s
+```

@@ -1,5 +1,5 @@
 {
-  "name": "pluralsight-redux-starter",
+  "name": "task2-React",
   "version": "1.0.0",
   "description": "React and Redux",
   "scripts": {
@@ -7,7 +7,13 @@
     "start": "npm-run-all --parallel open:src lint:watch",
     "open:src": "babel-node tools/srcServer.js",
     "lint": "node_modules/.bin/esw webpack.config.* src tools",
-    "lint:watch": "npm run lint -- --watch"
+    "lint:watch": "npm run lint -- --watch",
+    "clean-dist": "npm run remove-dist && mkdir dist",
+    "remove-dist": "node_modules/.bin/rimraf ./dist",
+    "build:html": "babel-node tools/buildHtml.js",
+    "prebuild": "npm-run-all clean-dist lint build:html",
+    "build": "babel-node tools/build.js",
+    "postbuild": "babel-node tools/distServer.js"
   },
   "author": "MB",
   "license": "MIT",
@@ -25,7 +31,6 @@
     "redux": "^3.6.0",
     "redux-form": "6.4.1",
     "redux-form-material-ui": "^4.1.2",
-    "redux-localstorage": "^1.0.0-rc5",
     "redux-persist": "^4.0.1",
     "redux-thunk": "2.0.1",
     "toastr": "2.1.2"
@@ -43,7 +48,6 @@
     "compression": "1.6.1",
     "cross-env": "1.0.7",
     "css-loader": "0.23.1",
-    "enzyme": "2.2.0",
     "eslint": "2.9.0",
     "eslint-plugin-import": "1.6.1",
     "eslint-plugin-react": "5.0.1",
@@ -56,9 +60,7 @@
     "nock": "8.0.0",
     "npm-run-all": "1.8.0",
     "open": "0.0.5",
-    "react-addons-test-utils": "15.0.2",
     "redux-immutable-state-invariant": "1.2.3",
-    "redux-mock-store": "1.0.2",
     "rimraf": "2.5.2",
     "style-loader": "0.13.1",
     "url-loader": "0.5.7",
