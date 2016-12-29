@@ -18,38 +18,38 @@ let InitializeManagerEditForm = props => {
         <FlatButton style={style} label="Undo Changes" disabled={pristine || submitting} onClick={reset}/>
         <FlatButton style={style} onClick={editManager} label="Back" />
       </div>
-              <div>
-         <Field name="firstName"
-            component={TextField}
-            hintText="firstName"
-            floatingLabelText="firstName"/>
-        </div>
-        <div>
-           <Field name="lastName"
-            component={TextField}
-            hintText="lastName"
-            floatingLabelText="lastName"/>
-        </div>
-        <div>
-          <Field name="patronymic"
-            component={TextField}
-            hintText="patronymic"
-            floatingLabelText="patronymic"/>
-        </div>
-        <div>
-          <Field name="welcomTime.start"
-            component={TimePicker}
-            format={(value) => typeof(value) === 'string' ? new Date(value) : value}   
-            hintText="welcomTimeStart" 
-            floatingLabelText="welcomTimeStart"/>
-        </div>
-        <div>
-          <Field name="welcomTime.end"
-            component={TimePicker}
-            format={(value) => typeof(value) === 'string' ? new Date(value) : value}   
-            hintText="welcomTimeEnd" 
-            floatingLabelText="welcomTimeEnd"/>
-        </div>
+      <div>
+        <Field name="firstName"
+          component={TextField}
+          hintText="firstName"
+          floatingLabelText="firstName"/>
+      </div>
+      <div>
+        <Field name="lastName"
+          component={TextField}
+          hintText="lastName"
+          floatingLabelText="lastName"/>
+      </div>
+      <div>
+        <Field name="patronymic"
+          component={TextField}
+          hintText="patronymic"
+          floatingLabelText="patronymic"/>
+      </div>
+      <div>
+        <Field name="welcomTime.start"
+          component={TimePicker}
+          format={(value) => typeof(value) === 'string' ? new Date(value) : value}   
+          hintText="welcomTimeStart" 
+          floatingLabelText="welcomTimeStart"/>
+      </div>
+      <div>
+        <Field name="welcomTime.end"
+          component={TimePicker}
+          format={(value) => typeof(value) === 'string' ? new Date(value) : value}   
+          hintText="welcomTimeEnd" 
+          floatingLabelText="welcomTimeEnd"/>
+      </div>
     </form>
   );
 };

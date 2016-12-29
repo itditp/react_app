@@ -1,22 +1,28 @@
 import React, { Component, PropTypes } from 'react';
+import { connect } from 'react-redux';
 import { Field, reduxForm } from 'redux-form';
 import { TimePicker, TextField } from 'redux-form-material-ui';
 import FlatButton from 'material-ui/FlatButton';
 import validate from './ValidateWorker';
 
+const newWorker = {           //forValidation
+    lunchTime: {
+        start: new Date(),
+        end: new Date()
+    }
+};
 
 let WorkerForm = class WorkerForm extends Component {
   render() {
 
     const style = {float: 'right'};
     const { handleSubmit, submitting, pristine, backToCoice } = this.props;
-    const required = value => value ? undefined : 'Required';
     
     return (
       <form>
         <div>
-            <FlatButton style={style} disabled={pristine || submitting} onTouchTap={handleSubmit} label="Save" />
-            <FlatButton style={style} onClick={backToCoice} label="Back" />
+          <FlatButton style={style} disabled={pristine || submitting} onTouchTap={handleSubmit} label="Save" />
+          <FlatButton style={style} onClick={backToCoice} label="Back" />
         </div>
         <div>
          <Field name="firstName"
@@ -55,16 +61,14 @@ let WorkerForm = class WorkerForm extends Component {
             component={TimePicker}
             format={null}   
             hintText="lunchTimeStart" 
-            floatingLabelText="lunchTimeStart"
-            validate={required}/>
+            floatingLabelText="lunchTimeStart"/>
         </div>
         <div>
           <Field name="lunchTime.end"
             component={TimePicker}
             hintText="lunchTimeEnd" 
             floatingLabelText="lunchTimeEnd"
-            format={null}
-            validate={required}/>
+            format={null}/>
         </div>
       </form>
     );
@@ -83,5 +87,11 @@ WorkerForm = reduxForm({
   form: 'worker',
   validate
 })(WorkerForm);
+
+WorkerForm = connect(
+  (state, ownProps) => ({
+    initialValues: newWorker
+  })
+)(WorkerForm);
 
 export default WorkerForm;

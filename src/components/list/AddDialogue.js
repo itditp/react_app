@@ -8,7 +8,6 @@ import ManagerForm from './ManagerForm';
 
 
 const style = {margin: 12};
-const required = value => value == null ? 'Required' : undefined;
 const styleFlatButtonButton = {
   float: 'right'
 };

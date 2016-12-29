@@ -4,8 +4,9 @@ import FlatButton from 'material-ui/FlatButton';
 const style = {float: 'right'};
 
 const ManagerDetail = ({currentMan, editManager}) => (
+  
   <div>
-  <FlatButton label="Edit" primary onClick={editManager} style={style} />
+    <FlatButton label="Edit" primary onClick={editManager} style={style} />
     <h3> This is manager</h3>
     <p>firstName: {currentMan.firstName}</p>
     <p>patronymic: {currentMan.patronymic}</p>

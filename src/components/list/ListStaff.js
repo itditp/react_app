@@ -7,13 +7,12 @@ import {List} from 'material-ui/List';
 class ListStaff extends Component {
 
   constructor(props){
-
     super(props);
 
-    this.renderRecipeList = this.renderRecipeList.bind(this);
+    this.renderList = this.renderList.bind(this);
   }
 
-  renderRecipeList(man, index){
+  renderList(man, index){
 
     const currentMan = man;
     const styleForMan = {
@@ -35,11 +34,9 @@ class ListStaff extends Component {
     const { staff } = this.props;
 
     return(
-      <div>
-        <List>
-          {staff.sort((a, b) => a.firstName.toLowerCase() > b.firstName.toLowerCase()).map(self.renderRecipeList)}
-        </List>
-      </div>
+      <List>
+        {staff.sort((a, b) => a.firstName.toLowerCase() > b.firstName.toLowerCase()).map(self.renderList)}
+      </List>
     );
   }
 }

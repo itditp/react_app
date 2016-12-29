@@ -1,5 +1,7 @@
 const ValidateManager = values => {
+
   const errors = {};
+  
   if (!values.firstName) {
     errors.firstName = 'Required';
   }else if (values.firstName.length > 20) {

@@ -10,8 +10,6 @@ let InitializeWorkerEditForm = props => {
   
   const { handleSubmit, pristine, reset, submitting, editWorker } = props;
   const style = {float: 'right'};
-  const required = value => value == null ? 'Required' : undefined;
-  const positiveNumber = value => value < 0 ? 'Only positiveNumber' : undefined;
 
   return (
     <form>

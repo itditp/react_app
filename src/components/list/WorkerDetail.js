@@ -1,13 +1,12 @@
 import React, {PropTypes} from 'react';
 import FlatButton from 'material-ui/FlatButton';
-import { If, Then } from 'react-if';
 
 const style = {float: 'right'};
 
 
 const WorkerDetail = ({currentMan, editWorker}) => (
   <div>
-  <FlatButton label="Edit" primary onClick={editWorker} style={style} />
+    <FlatButton label="Edit" primary onClick={editWorker} style={style} />
     <h3> This is worker</h3>
     <p>firstName: {currentMan.firstName}</p>
     <p>patronymic: {currentMan.patronymic}</p>

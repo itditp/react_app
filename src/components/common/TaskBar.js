@@ -6,6 +6,7 @@ export default class TaskBar extends React.Component {
 
     constructor() {
     super();
+    
     switch (location.pathname) {
       case '/':
         this.state = {initalTab: 0};

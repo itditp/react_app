@@ -17,6 +17,7 @@ const styleForPost = {
 
 const PostList = ({posts, loading}) => {
 	return (
+    
     <Paper style={style} zDepth={3}>
       {loading && <Loadcircle/>}
       {posts.map(post =>

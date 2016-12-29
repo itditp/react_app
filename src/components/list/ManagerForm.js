@@ -3,7 +3,14 @@ import { Field, reduxForm } from 'redux-form';
 import { TimePicker, TextField } from 'redux-form-material-ui';
 import FlatButton from 'material-ui/FlatButton';
 import validate from './ValidateManager';
+import { connect } from 'react-redux';
 
+const newManager = {           //forValidation
+  welcomTime: {
+    start: new Date(),
+    end: new Date()
+  }
+};
 
 let ManagerForm = class ManagerForm extends Component {
 
@@ -11,7 +18,6 @@ let ManagerForm = class ManagerForm extends Component {
 
     const style = {float: 'right'};
     const { handleSubmit, submitting, pristine, backToCoice } = this.props;
-    const required = value => value ? undefined : 'Required';
 
     return (
       <div>
@@ -21,13 +27,13 @@ let ManagerForm = class ManagerForm extends Component {
             <FlatButton style={style} onClick={backToCoice} label="Back" />
           </div>
           <div>
-           <Field name="firstName"
+            <Field name="firstName"
               component={TextField}
               hintText="firstName"
               floatingLabelText="firstName"/>
           </div>
           <div>
-             <Field name="lastName"
+            <Field name="lastName"
               component={TextField}
               hintText="lastName"
               floatingLabelText="lastName"/>
@@ -43,16 +49,14 @@ let ManagerForm = class ManagerForm extends Component {
               component={TimePicker}
               format={null}
               hintText="welcomTimeStart" 
-              floatingLabelText="welcomTimeStart"
-              validate={required}/>
+              floatingLabelText="welcomTimeStart"/>
           </div>
           <div>
             <Field name="welcomTime.end"
               component={TimePicker}
               format={null}
               hintText="welcomTimeEnd" 
-              floatingLabelText="welcomTimeEnd"
-              validate={required}/>
+              floatingLabelText="welcomTimeEnd"/>
           </div>
         </form>
       </div>
@@ -72,5 +76,11 @@ ManagerForm = reduxForm({
   form: 'manager',
   validate
 })(ManagerForm);
+
+ManagerForm = connect(
+  (state, ownProps) => ({
+    initialValues: newManager
+  })
+)(ManagerForm);
 
 export default ManagerForm;

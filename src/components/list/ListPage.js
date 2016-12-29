@@ -3,9 +3,6 @@ import {connect} from 'react-redux';
 import {bindActionCreators} from 'redux';
 import * as workerActions from '../../actions/workerActions';
 import * as managerActions from '../../actions/managerActions';
-import FlatButton from 'material-ui/FlatButton';
-import Dialog from 'material-ui/Dialog';
-import {Card, CardActions, CardHeader, CardText} from 'material-ui/Card';
 import ContentAdd from 'material-ui/svg-icons/content/add';
 import FloatingActionButton from 'material-ui/FloatingActionButton';
 import AddDialogue from './AddDialogue';
@@ -114,9 +111,7 @@ class ListPage extends React.Component {
 						AddManager={this.AddManager}
 						backToCoice={this.backToCoice}/>
 				</div>
-				<div>
-					<ListStaff staff={staff}/>
-				</div>
+				<ListStaff staff={staff}/>
 			</div>
 		);
 	}
@@ -130,7 +125,6 @@ ListPage.propTypes = {
 };
 
 function mapStateToProps(state, ownProps) {
-
 	return {
 		workers: state.workers,
 		managers: state.managers

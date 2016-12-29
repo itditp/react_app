@@ -1,6 +1,5 @@
 import React, { Component, PropTypes } from 'react';
 import Dialog from 'material-ui/Dialog';
-import Paper from 'material-ui/Paper';
 import FlatButton from 'material-ui/FlatButton';
 import WorkerDetail from './WorkerDetail';
 import ManagerDetail from './ManagerDetail';
@@ -17,7 +16,6 @@ import toastr from 'toastr';
 class DetailEditBox extends Component {
 
 	constructor(props){
-
 		super(props);
 
 		this.state = {
@@ -91,7 +89,6 @@ class DetailEditBox extends Component {
 					{this.props.currentMan.patronymic}{' '}
 					{this.props.currentMan.lastName}
 				</ListItem>
-
 				<Dialog 
 					open={this.state.showModal}
 					modal
@@ -118,7 +115,6 @@ DetailEditBox.propTypes = {
 };
 
 function mapStateToProps(state, ownProps) {
-
 	return {
 		workers: state.workers,
 		managers: state.managers
