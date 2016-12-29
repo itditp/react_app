@@ -11,6 +11,7 @@ let ManagerForm = class ManagerForm extends Component {
 
     const style = {float: 'right'};
     const { handleSubmit, submitting, pristine, backToCoice } = this.props;
+    const required = value => value ? undefined : 'Required';
 
     return (
       <div>
@@ -42,14 +43,16 @@ let ManagerForm = class ManagerForm extends Component {
               component={TimePicker}
               format={null}
               hintText="welcomTimeStart" 
-              floatingLabelText="welcomTimeStart"/>
+              floatingLabelText="welcomTimeStart"
+              validate={required}/>
           </div>
           <div>
             <Field name="welcomTime.end"
               component={TimePicker}
               format={null}
               hintText="welcomTimeEnd" 
-              floatingLabelText="welcomTimeEnd"/>
+              floatingLabelText="welcomTimeEnd"
+              validate={required}/>
           </div>
         </form>
       </div>

@@ -39,14 +39,14 @@ let InitializeManagerEditForm = props => {
         <div>
           <Field name="welcomTime.start"
             component={TimePicker}
-            format={null}   
+            format={(value) => typeof(value) === 'string' ? new Date(value) : value}   
             hintText="welcomTimeStart" 
             floatingLabelText="welcomTimeStart"/>
         </div>
         <div>
           <Field name="welcomTime.end"
             component={TimePicker}
-            format={null}
+            format={(value) => typeof(value) === 'string' ? new Date(value) : value}   
             hintText="welcomTimeEnd" 
             floatingLabelText="welcomTimeEnd"/>
         </div>

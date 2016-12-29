@@ -55,14 +55,14 @@ let InitializeWorkerEditForm = props => {
         <div>
           <Field name="lunchTime.start"
             component={TimePicker}
-            format={null}   
+            format={(value) => typeof(value) === 'string' ? new Date(value) : value}   
             hintText="lunchTimeStart" 
             floatingLabelText="lunchTimeStart"/>
         </div>
         <div>
           <Field name="lunchTime.end"
             component={TimePicker}
-            format={null}
+            format={(value) => typeof(value) === 'string' ? new Date(value) : value}
             hintText="lunchTimeEnd" 
             floatingLabelText="lunchTimeEnd"/>
         </div>
