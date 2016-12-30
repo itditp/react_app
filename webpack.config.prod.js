@@ -1,4 +1,4 @@
-import webpack from 'webpack';
+  import webpack from 'webpack';
 import path from 'path';
 import ExtractTextPlugin from 'extract-text-webpack-plugin';
 
@@ -25,7 +25,11 @@ export default {
     new webpack.DefinePlugin(GLOBALS),
     new ExtractTextPlugin('styles.css'),
     new webpack.optimize.DedupePlugin(),
-    new webpack.optimize.UglifyJsPlugin()
+    new webpack.optimize.UglifyJsPlugin({
+    compress: {
+        warnings: false
+    }
+})
   ],
   module: {
     loaders: [
