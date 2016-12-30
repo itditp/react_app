@@ -2,15 +2,8 @@ import React, { Component, PropTypes } from 'react';
 import { Field, reduxForm } from 'redux-form';
 import { TimePicker, TextField } from 'redux-form-material-ui';
 import FlatButton from 'material-ui/FlatButton';
-import validate from './ValidateManager';
-import { connect } from 'react-redux';
 
-const newManager = {           //forValidation
-  welcomTime: {
-    start: new Date(),
-    end: new Date()
-  }
-};
+
 
 let ManagerForm = class ManagerForm extends Component {
 
@@ -18,10 +11,14 @@ let ManagerForm = class ManagerForm extends Component {
 
     const style = {float: 'right'};
     const { handleSubmit, submitting, pristine, backToCoice } = this.props;
+    const required = value => value ? undefined : 'Required';
+    const maxLength = max => value => value && value.length > max ? `Must be ${max} characters or less` : undefined;
+    const maxLength20 = maxLength(20);
+    const minLength = min => value => value && value.length < min ? `Must be ${min} characters or greater` : undefined;
+    const minLength2 = minLength(2);
 
     return (
-      <div>
-        <form onSubmit={handleSubmit}>
+        <form>
           <div>
             <FlatButton style={style} disabled={pristine || submitting} onTouchTap={handleSubmit} label="Save" />
             <FlatButton style={style} onClick={backToCoice} label="Back" />
@@ -30,36 +27,40 @@ let ManagerForm = class ManagerForm extends Component {
             <Field name="firstName"
               component={TextField}
               hintText="firstName"
-              floatingLabelText="firstName"/>
+              floatingLabelText="firstName"
+              validate={[ required, maxLength20, minLength2 ]}/>
           </div>
           <div>
             <Field name="lastName"
               component={TextField}
               hintText="lastName"
-              floatingLabelText="lastName"/>
+              floatingLabelText="lastName"
+              validate={[ required, maxLength20, minLength2 ]}/>
           </div>
           <div>
             <Field name="patronymic"
               component={TextField}
               hintText="patronymic"
-              floatingLabelText="patronymic"/>
+              floatingLabelText="patronymic"
+              validate={[ required, maxLength20, minLength2 ]}/>
           </div>
           <div>
             <Field name="welcomTime.start"
               component={TimePicker}
-              format={null}
               hintText="welcomTimeStart" 
-              floatingLabelText="welcomTimeStart"/>
+              floatingLabelText="welcomTimeStart"
+              format={null}
+              validate={required}/>
           </div>
           <div>
             <Field name="welcomTime.end"
               component={TimePicker}
-              format={null}
               hintText="welcomTimeEnd" 
-              floatingLabelText="welcomTimeEnd"/>
+              floatingLabelText="welcomTimeEnd"
+              format={null}
+              validate={required}/>
           </div>
         </form>
-      </div>
     );
   }
 };
@@ -73,14 +74,8 @@ ManagerForm.propTypes = {
 
 // Decorate the form component
 ManagerForm = reduxForm({
-  form: 'manager',
-  validate
+  form: 'manager'
 })(ManagerForm);
 
-ManagerForm = connect(
-  (state, ownProps) => ({
-    initialValues: newManager
-  })
-)(ManagerForm);
-
 export default ManagerForm;
+

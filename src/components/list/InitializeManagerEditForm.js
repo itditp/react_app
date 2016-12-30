@@ -3,13 +3,17 @@ import { connect } from 'react-redux';
 import { Field, reduxForm } from 'redux-form';
 import { TimePicker, TextField } from 'redux-form-material-ui';
 import FlatButton from 'material-ui/FlatButton';
-import validate from './ValidateManager';
 
 
 let InitializeManagerEditForm = props => {
   
   const { handleSubmit, pristine, reset, submitting, editManager } = props;
   const style = {float: 'right'};
+  const required = value => value ? undefined : 'Required';
+  const maxLength = max => value => value && value.length > max ? `Must be ${max} characters or less` : undefined;
+  const maxLength20 = maxLength(20);
+  const minLength = min => value => value && value.length < min ? `Must be ${min} characters or greater` : undefined;
+  const minLength2 = minLength(2);
 
   return (
     <form>
@@ -22,33 +26,38 @@ let InitializeManagerEditForm = props => {
         <Field name="firstName"
           component={TextField}
           hintText="firstName"
-          floatingLabelText="firstName"/>
+          floatingLabelText="firstName"
+          validate={[ required, maxLength20, minLength2 ]}/>
       </div>
       <div>
         <Field name="lastName"
           component={TextField}
           hintText="lastName"
-          floatingLabelText="lastName"/>
+          floatingLabelText="lastName"
+          validate={[ required, maxLength20, minLength2 ]}/>
       </div>
       <div>
         <Field name="patronymic"
           component={TextField}
           hintText="patronymic"
-          floatingLabelText="patronymic"/>
+          floatingLabelText="patronymic"
+          validate={[ required, maxLength20, minLength2 ]}/>
       </div>
       <div>
         <Field name="welcomTime.start"
           component={TimePicker}
           format={(value) => typeof(value) === 'string' ? new Date(value) : value}   
           hintText="welcomTimeStart" 
-          floatingLabelText="welcomTimeStart"/>
+          floatingLabelText="welcomTimeStart"
+          validate={required}/>
       </div>
       <div>
         <Field name="welcomTime.end"
           component={TimePicker}
           format={(value) => typeof(value) === 'string' ? new Date(value) : value}   
           hintText="welcomTimeEnd" 
-          floatingLabelText="welcomTimeEnd"/>
+          floatingLabelText="welcomTimeEnd"
+          validate={required}/>
       </div>
     </form>
   );
@@ -56,8 +65,7 @@ let InitializeManagerEditForm = props => {
 
 // Decorate with reduxForm(). It will read the initialValues prop provided by connect()
 InitializeManagerEditForm = reduxForm({
-  form: 'InitializeManagerEditForm',
-  validate
+  form: 'InitializeManagerEditForm'
 })(InitializeManagerEditForm);
 
 // You have to connect() to any reducers that you wish to connect to yourself
