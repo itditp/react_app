@@ -46,7 +46,7 @@ React https://facebook.github.io/react/
 Redux https://github.com/reactjs/redux
 
 ```sh
-git clone https://github.com/itditp/task2-React-.git && cd task2-React-
+git clone https://github.com/itditp/task2-React-.git && cd react_app
 npm install
 production: npm run build
 developer: npm start -s
