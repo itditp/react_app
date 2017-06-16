@@ -40,16 +40,10 @@ Front-end приложение
 2.3. Во время загрузки показывать троббер.
 
 Технические требования:
-
-Тестовое задание должно быть выполнено c использованием:
- UI library http://www.material-ui.com/
+UI library http://www.material-ui.com/
 Webpack https://webpack.github.io/
 React https://facebook.github.io/react/
 Redux https://github.com/reactjs/redux
-Ресурс с полезными видеоуроками https://egghead.io/technologies/react
-
-
-
 
 ```sh
 git clone https://github.com/itditp/task2-React-.git && cd task2-React-
